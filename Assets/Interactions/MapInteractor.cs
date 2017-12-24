@@ -16,7 +16,12 @@ public class MapInteractor : MonoBehaviour {
 				Transform objectHit = hit.transform;
 				HexView result = objectHit.GetComponentInParent<HexView>();
 				if (result != null)
-					Debug.Log(result.HexModel.Difficulty);
+				{
+					foreach (HexModel neighbor in result.HexModel.Neighbors)
+					{
+						Debug.Log(neighbor.Coord);
+					}
+				}
 			}
 		}
 	}

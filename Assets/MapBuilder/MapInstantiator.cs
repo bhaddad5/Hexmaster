@@ -33,6 +33,7 @@ public class MapInstantiator : MonoBehaviour
 				position.y = 0f;
 				position.z = z * (HexMetrics.outerRadius * 1.5f);
 				newHex.transform.position = position;
+				newHex.Coord = new Vector2(x, z);
 
 				z++;
 			}
