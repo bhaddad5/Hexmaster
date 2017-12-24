@@ -17,6 +17,7 @@ public class MapModel
 			foreach (HexModel hex in column)
 			{
 				SetUpHexAdjacencies(hex, x, z);
+				hex.Coord = new Vector2(x, z);
 				z++;
 			}
 			x++;
@@ -25,12 +26,24 @@ public class MapModel
 
 	private void SetUpHexAdjacencies(HexModel hex, int x, int z)
 	{
-		TryAddAdjacency(x, z+1, hex);
-		TryAddAdjacency(x-1, z, hex);
-		TryAddAdjacency(x, z-1, hex);
-		TryAddAdjacency(x+1, z-1, hex);
-		TryAddAdjacency(x+1, z, hex);
-		TryAddAdjacency(x+1, z+1, hex);
+		if (z % 2 == 1)
+		{
+			TryAddAdjacency(x, z + 1, hex);
+			TryAddAdjacency(x - 1, z, hex);
+			TryAddAdjacency(x, z - 1, hex);
+			TryAddAdjacency(x + 1, z - 1, hex);
+			TryAddAdjacency(x + 1, z, hex);
+			TryAddAdjacency(x + 1, z + 1, hex);
+		}
+		else
+		{
+			TryAddAdjacency(x - 1, z + 1, hex);
+			TryAddAdjacency(x - 1, z, hex);
+			TryAddAdjacency(x - 1, z - 1, hex);
+			TryAddAdjacency(x, z - 1, hex);
+			TryAddAdjacency(x + 1, z, hex);
+			TryAddAdjacency(x, z + 1, hex);
+		}
 	}
 
 	private void TryAddAdjacency(int x, int z, HexModel hex)

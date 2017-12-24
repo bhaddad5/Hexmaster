@@ -17,6 +17,7 @@ public class MapInteractor : MonoBehaviour {
 				HexView result = objectHit.GetComponentInParent<HexView>();
 				if (result != null)
 				{
+					Debug.Log("me: " + result.Coord);
 					foreach (HexModel neighbor in result.HexModel.Neighbors)
 					{
 						Debug.Log(neighbor.Coord);
