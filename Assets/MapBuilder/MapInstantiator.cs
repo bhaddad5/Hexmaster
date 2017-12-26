@@ -14,13 +14,24 @@ public static class HexMetrics
 public class MapInstantiator : MonoBehaviour
 {
 	public HexView HexPref;
+	public UnitView UnitPref;
 	public static HexView HexPrefab;
-	void Awake(){HexPrefab = HexPref;}
+	public static UnitView UnitPrefab;
+	void Awake(){
+		HexPrefab = HexPref;
+		UnitPrefab = UnitPref;
+	}
 
 	public static void InstantiateMap(MapModel model)
 	{
+		InstantiateHexes(model.Map);
+		InstantiateUnits(model.Units);
+	}
+
+	public static void InstantiateHexes(HexModel[][] Hexes)
+	{
 		int x = 0;
-		foreach (HexModel[] hexModels in model.Map)
+		foreach (HexModel[] hexModels in Hexes)
 		{
 			int z = 0;
 			foreach (HexModel hex in hexModels)
@@ -34,6 +45,32 @@ public class MapInstantiator : MonoBehaviour
 				position.z = z * (HexMetrics.outerRadius * 1.5f);
 				newHex.transform.position = position;
 				newHex.Coord = new Vector2(x, z);
+
+				z++;
+			}
+			x++;
+		}
+	}
+
+	public static void InstantiateUnits(UnitModel[][] Units)
+	{
+		int x = 0;
+		foreach (UnitModel[] unitModels in Units)
+		{
+			int z = 0;
+			foreach (UnitModel unit in unitModels)
+			{
+				if (unit == null)
+					continue;
+
+				UnitView newUnit = GameObject.Instantiate(UnitPrefab);
+				newUnit.Model = unit;
+
+				Vector3 position = new Vector3();
+				position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
+				position.y = 0.01f;
+				position.z = z * (HexMetrics.outerRadius * 1.5f);
+				newUnit.transform.position = position;
 
 				z++;
 			}

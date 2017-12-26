@@ -8,6 +8,8 @@ public class MapModel
 {
 	public HexModel[][] Map;
 
+	public UnitModel[][] Units;
+
 	public void SetUpAdjacencies()
 	{
 		int x = 0;

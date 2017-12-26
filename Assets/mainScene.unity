@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HexPref: {fileID: 114191618961119468, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
+  UnitPref: {fileID: 114432795823006712, guid: d1e0cd8281c64894984bf71de45e7baf, type: 2}
 --- !u!4 &257718559
 Transform:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 912145714}
   m_LocalRotation: {x: 0.62388307, y: -0, z: -0, w: 0.78151774}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -370,79 +371,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1833153382
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729918967558782, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 224321841315936294, guid: b83426e270bfc944180a41dea48eec9c,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 224321841315936294, guid: b83426e270bfc944180a41dea48eec9c,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1287750003877942, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114977643274798004, guid: b83426e270bfc944180a41dea48eec9c,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114977643274798004, guid: b83426e270bfc944180a41dea48eec9c,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114977643274798004, guid: b83426e270bfc944180a41dea48eec9c,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b83426e270bfc944180a41dea48eec9c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2037955049
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grass: {fileID: 21300000, guid: 65607865281a160468ef405381a646ef, type: 3}
   City: {fileID: 21300000, guid: f86527cab5c2f4549ba9b6a43e28a7cf, type: 3}
+  ImpGuard: {fileID: 21300000, guid: 26e09e8c8baf93c4e99792ab5c3cd139, type: 3}
+  ChaosGuard: {fileID: 21300000, guid: b63ce098395a38945b700c7bc1777861, type: 3}
 --- !u!4 &2037955051
 Transform:
   m_ObjectHideFlags: 0

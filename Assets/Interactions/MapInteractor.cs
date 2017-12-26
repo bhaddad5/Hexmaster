@@ -20,7 +20,7 @@ public class MapInteractor : MonoBehaviour {
 					Debug.Log("me: " + result.Coord);
 					foreach (HexModel neighbor in result.HexModel.Neighbors)
 					{
-						Debug.Log(neighbor.Coord);
+						//Debug.Log(neighbor.Coord);
 					}
 				}
 			}

@@ -9,10 +9,11 @@ public class HexModel
 {
 	[NonSerialized]
 	public List<HexModel> Neighbors = new List<HexModel>();
+	[NonSerialized]
+	public Vector2 Coord;
 
 	public float Difficulty;
 	public Sprite Sprite;
-	public Vector2 Coord;
 
 	public HexModel(float diff, Sprite sprite)
 	{
