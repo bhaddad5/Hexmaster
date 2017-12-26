@@ -17,10 +17,11 @@ public class MapInteractor : MonoBehaviour {
 				HexView result = objectHit.GetComponentInParent<HexView>();
 				if (result != null)
 				{
-					Debug.Log("me: " + result.Coord);
-					foreach (HexModel neighbor in result.HexModel.Neighbors)
+					Debug.Log("me: " + result.HexModel.Coord);
+					var unit = MapInstantiator.GetUnitAtPoint(result.HexModel.Coord);
+					if (unit != null)
 					{
-						//Debug.Log(neighbor.Coord);
+						Debug.Log(unit.UnitName);
 					}
 				}
 			}

@@ -19,7 +19,7 @@ public class MapModel
 			foreach (HexModel hex in column)
 			{
 				SetUpHexAdjacencies(hex, x, z);
-				hex.Coord = new Vector2(x, z);
+				hex.Coord = new HexPos(x, z);
 				z++;
 			}
 			x++;

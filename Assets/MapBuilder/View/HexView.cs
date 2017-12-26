@@ -10,11 +10,9 @@ public class HexView : MonoBehaviour
 	public SpriteRenderer SpriteView;
 	public Text CoordText;
 
-	public Vector2 Coord;
-
 	void Start()
 	{
 		SpriteView.sprite = HexModel.Sprite;
-		CoordText.text = Coord.x + ", " + Coord.y;
+		CoordText.text = HexModel.Coord.X + ", " + HexModel.Coord.Z;
 	}
 }
