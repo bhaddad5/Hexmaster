@@ -16,10 +16,18 @@ public class HexView : MonoBehaviour
 	{
 		Sprite.sprite = HexModel.Sprite;
 		CoordText.text = HexModel.Coord.X + ", " + HexModel.Coord.Z;
+
+		HexModel.TriggerHighlight += HighlightHex;
+		HighlightHex(HexModel.HexHighlightTypes.None);
 	}
 
-	private void HighlightSelectable()
+	private void HighlightHex(HexModel.HexHighlightTypes highlight)
 	{
-		
+		if(highlight == HexModel.HexHighlightTypes.None)
+			HexBorder.color = Color.black;
+		if (highlight == HexModel.HexHighlightTypes.Move)
+			HexBorder.color = Color.green;
+		if (highlight == HexModel.HexHighlightTypes.Attack)
+			HexBorder.color = Color.red;
 	}
 }

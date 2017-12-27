@@ -7,7 +7,8 @@ public class MapInteractor : MonoBehaviour
 	private UnitModel CurrSelectedUnit = null;
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
@@ -20,14 +21,29 @@ public class MapInteractor : MonoBehaviour
 				if (result != null)
 				{
 					Debug.Log("me: " + result.HexModel.Coord);
-					var unit = MapInstantiator.GetUnitAtPoint(result.HexModel.Coord);
+					var unit = MapInstantiator.Model.Units[result.HexModel.Coord.X][result.HexModel.Coord.Z];
+					ClearSelected();
 					if (unit != null)
-					{
-						CurrSelectedUnit = unit;
-						Debug.Log("Selected " + CurrSelectedUnit.UnitName);
-					}
+						HandleNewUnitSelected(result.HexModel.Coord, unit);
 				}
 			}
+		}
+	}
+
+	private void HandleNewUnitSelected(HexPos pos, UnitModel unit)
+	{
+		CurrSelectedUnit = unit;
+
+		Debug.Log("Selected " + CurrSelectedUnit.UnitName);
+
+		MapInstantiator.Model.Map[pos.X][pos.Z].HighlightHex(HexModel.HexHighlightTypes.Move);
+	}
+
+	private void ClearSelected()
+	{
+		foreach (HexModel hex in MapInstantiator.Model.AllHexes())
+		{
+			hex.HighlightHex(HexModel.HexHighlightTypes.None);
 		}
 	}
 }

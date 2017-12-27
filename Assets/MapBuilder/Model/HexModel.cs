@@ -41,4 +41,18 @@ public class HexModel
 		Sprite = sprite;
 		DefenseMod = defense;
 	}
+
+	public enum HexHighlightTypes
+	{
+		None,
+		Move,
+		Attack
+	}
+
+	public event Action<HexHighlightTypes> TriggerHighlight;
+
+	public void HighlightHex(HexHighlightTypes type)
+	{
+		TriggerHighlight.Invoke(type);
+	}
 }

@@ -13,12 +13,7 @@ public static class HexMetrics
 
 public class MapInstantiator : MonoBehaviour
 {
-	private static MapModel Model;
-
-	public static UnitModel GetUnitAtPoint(HexPos hexPos)
-	{
-		return Model.Units[hexPos.X][hexPos.Z];
-	}
+	public static MapModel Model;
 
 	public HexView HexPref;
 	public UnitView UnitPref;

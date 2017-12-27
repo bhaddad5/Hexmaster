@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -25,6 +26,16 @@ public class MapModel
 			x++;
 		}
 	}
+
+	public List<HexModel> AllHexes()
+	{
+		List<HexModel> hexes = new List<HexModel>();
+		foreach (HexModel[] hexModels in Map)
+		{
+			hexes = hexes.Concat(hexModels).ToList();
+		}
+		return hexes;
+	} 
 
 	private void SetUpHexAdjacencies(HexModel hex, int x, int z)
 	{
