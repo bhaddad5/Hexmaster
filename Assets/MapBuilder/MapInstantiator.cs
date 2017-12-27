@@ -19,7 +19,9 @@ public class MapInstantiator : MonoBehaviour
 	public UnitView UnitPref;
 	public static HexView HexPrefab;
 	public static UnitView UnitPrefab;
-	void Awake(){
+
+	void Awake()
+	{
 		HexPrefab = HexPref;
 		UnitPrefab = UnitPref;
 	}
@@ -62,6 +64,7 @@ public class MapInstantiator : MonoBehaviour
 					UnitView newUnit = GameObject.Instantiate(UnitPrefab);
 					newUnit.Model = unit;
 					newUnit.transform.position = GetHexPos(x, z);
+					newUnit.transform.position += new Vector3(0, 0.01f, 0);
 				}
 				z++;
 			}

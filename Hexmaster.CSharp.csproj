@@ -225,6 +225,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Interactions\CameraControls.cs" />
     <Compile Include="Assets\Interactions\MapInteractor.cs" />
     <Compile Include="Assets\Interactions\SelectedUnitController.cs" />
     <Compile Include="Assets\MapBuilder\MapInstantiator.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\Units\Model\FactionModel.cs" />
     <Compile Include="Assets\Units\Model\UnitModel.cs" />
     <Compile Include="Assets\Units\View\UnitView.cs" />
   </ItemGroup>

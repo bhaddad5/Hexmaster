@@ -6,6 +6,9 @@ using UnityEngine;
 [Serializable]
 public class UnitModel
 {
+	[NonSerialized]
+	public FactionModel Faction;
+
 	public float MovementCurr;
 	public float MovementMax;
 
