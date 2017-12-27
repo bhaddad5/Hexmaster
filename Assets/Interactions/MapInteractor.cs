@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapInteractor : MonoBehaviour {
+public class MapInteractor : MonoBehaviour
+{
+	private UnitModel CurrSelectedUnit = null;
 
 	// Update is called once per frame
 	void Update () {
@@ -21,7 +23,8 @@ public class MapInteractor : MonoBehaviour {
 					var unit = MapInstantiator.GetUnitAtPoint(result.HexModel.Coord);
 					if (unit != null)
 					{
-						Debug.Log(unit.UnitName);
+						CurrSelectedUnit = unit;
+						Debug.Log("Selected " + CurrSelectedUnit.UnitName);
 					}
 				}
 			}

@@ -6,7 +6,9 @@ using UnityEngine;
 [Serializable]
 public class UnitModel
 {
-	public float Movement;
+	public float MovementCurr;
+	public float MovementMax;
+
 	public float Attack;
 	public float Defense;
 

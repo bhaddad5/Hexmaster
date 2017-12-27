@@ -402,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grass: {fileID: 21300000, guid: 65607865281a160468ef405381a646ef, type: 3}
   City: {fileID: 21300000, guid: f86527cab5c2f4549ba9b6a43e28a7cf, type: 3}
+  Forest: {fileID: 21300000, guid: 23d28e685fbc67947910fc78f3029e37, type: 3}
   ImpGuard: {fileID: 21300000, guid: 26e09e8c8baf93c4e99792ab5c3cd139, type: 3}
   ChaosGuard: {fileID: 21300000, guid: b63ce098395a38945b700c7bc1777861, type: 3}
 --- !u!4 &2037955051

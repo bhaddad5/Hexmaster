@@ -6,18 +6,24 @@ public class TestSceneBuilder : MonoBehaviour
 {
 	public Sprite Grass;
 	public Sprite City;
+	public Sprite Forest;
 
 	public Sprite ImpGuard;
 	public Sprite ChaosGuard;
 
+	private HexModel GrassHex { get { return new HexModel(.5f, 0f, Grass); } }
+	private HexModel ForestHex { get { return new HexModel(.9f, 1f, Forest); } }
+	private HexModel CityHex { get { return new HexModel(.5f, 3f, City); } }
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		MapModel Map = new MapModel();
 		Map.Map = new HexModel[4][];
-		Map.Map[0] = new[] {new HexModel(1, Grass), new HexModel(1, Grass), new HexModel(1, Grass), new HexModel(1, Grass) };
-		Map.Map[1] = new[] { new HexModel(2, City), new HexModel(2, City), new HexModel(1, Grass), new HexModel(1, Grass) };
-		Map.Map[2] = new[] { new HexModel(1, Grass), new HexModel(1, Grass), new HexModel(1, Grass), new HexModel(1, Grass) };
-		Map.Map[3] = new[] { new HexModel(1, Grass), new HexModel(1, Grass), new HexModel(1, Grass), new HexModel(1, Grass) };
+		Map.Map[0] = new[] { ForestHex, ForestHex, GrassHex, GrassHex };
+		Map.Map[1] = new[] { ForestHex, ForestHex, GrassHex, GrassHex };
+		Map.Map[2] = new[] { ForestHex, GrassHex, CityHex, GrassHex };
+		Map.Map[3] = new[] { GrassHex, GrassHex, CityHex, GrassHex };
 		Map.SetUpAdjacencies();
 
 		Map.Units = new UnitModel[Map.Map.Length][];
@@ -30,7 +36,8 @@ public class TestSceneBuilder : MonoBehaviour
 			Defense = 3f,
 			HealthCurr = 1f,
 			HealthMax = 1f,
-			Movement = 1f,
+			MovementCurr = 1f,
+			MovementMax = 1f,
 			Sprite = ImpGuard,
 			UnitName = "Thracian 503<sup>rd</sup>",
 			UnitTypeName = "Imperial Guard"
@@ -42,7 +49,8 @@ public class TestSceneBuilder : MonoBehaviour
 			Defense = 2f,
 			HealthCurr = 0.5f,
 			HealthMax = 1f,
-			Movement = 1f,
+			MovementCurr = 1f,
+			MovementMax = 1f,
 			Sprite = ChaosGuard,
 			UnitName = "Gorlaks Reavers",
 			UnitTypeName = "Traitor Guard"

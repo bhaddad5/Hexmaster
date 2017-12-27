@@ -31,12 +31,14 @@ public class HexModel
 	[NonSerialized]
 	public HexPos Coord;
 
-	public float Difficulty;
+	public float MoveDifficulty;
+	public float DefenseMod;
 	public Sprite Sprite;
 
-	public HexModel(float diff, Sprite sprite)
+	public HexModel(float diff, float defense, Sprite sprite)
 	{
-		Difficulty = diff;
+		MoveDifficulty = diff;
 		Sprite = sprite;
+		DefenseMod = defense;
 	}
 }
