@@ -9,6 +9,7 @@ public class TestSceneBuilder : MonoBehaviour
 	public Sprite Forest;
 
 	public Sprite Infantry;
+	public Sprite Cavalry;
 
 	private HexModel GrassHex { get { return new HexModel(.5f, 0f, Grass); } }
 	private HexModel ForestHex { get { return new HexModel(.9f, 1f, Forest); } }
@@ -26,6 +27,18 @@ public class TestSceneBuilder : MonoBehaviour
 		UnitTypeName = "Imperial Guard"
 	}; } }
 
+	private UnitModel ImperialRoughRider{get{return new UnitModel()
+	{
+		Attack = 2f,
+		Defense = 1f,
+		HealthCurr = 1f,
+		HealthMax = 1f,
+		MovementCurr = 2f,
+		MovementMax = 2f,
+		Sprite = Cavalry,
+		UnitTypeName = "Rough Riders"
+	};}}
+
 	private UnitModel TraitorGuard
 	{
 		get { return new UnitModel()
@@ -37,8 +50,25 @@ public class TestSceneBuilder : MonoBehaviour
 				MovementCurr = 1f,
 				MovementMax = 1f,
 				Sprite = Infantry,
-				UnitTypeName = "Traitor Guard"
+				UnitTypeName = "Traitor Infantry"
 		};
+		}
+	}
+	private UnitModel TraitorRoughRider
+	{
+		get
+		{
+			return new UnitModel()
+			{
+				Attack = 2f,
+				Defense = 1f,
+				HealthCurr = 1f,
+				HealthMax = 1f,
+				MovementCurr = 2f,
+				MovementMax = 2f,
+				Sprite = Cavalry,
+				UnitTypeName = "Chaos Raiders"
+			};
 		}
 	}
 
@@ -52,10 +82,10 @@ public class TestSceneBuilder : MonoBehaviour
 			PlayerControlled = true
 		};
 
-		FactionModel ThracianTraitors = new FactionModel()
+		FactionModel ChaosRaiders = new FactionModel()
 		{
 			FactionColor = new Color(.9f, .1f, .1f),
-			FactionName = "Thracian Traitors",
+			FactionName = "Chaos Raiders",
 			PlayerControlled = true
 		};
 
@@ -81,11 +111,22 @@ public class TestSceneBuilder : MonoBehaviour
 		T503.Faction = Imperium;
 		Map.Units[1][2] = T503;
 
-		var Gorlak = TraitorGuard;
+		var KimernaKnights = ImperialRoughRider;
+		KimernaKnights.UnitName = "4<sup>th</sup> Knights of Kimerthas";
+		KimernaKnights.Faction = Imperium;
+		Map.Units[3][4] = KimernaKnights;
+
+		var Gorlak = TraitorRoughRider;
 		Gorlak.UnitName = "Gorlaks Reavers";
-		Gorlak.HealthCurr = 0.5f;
-		Gorlak.Faction = ThracianTraitors;
-		Map.Units[2][2] = Gorlak;
+		Gorlak.HealthCurr = 0.9f;
+		Gorlak.Faction = ChaosRaiders;
+		Map.Units[2][3] = Gorlak;
+
+		var Fargren = TraitorGuard;
+		Fargren.UnitName = "Fargren's Rifles";
+		Fargren.HealthCurr = 0.4f;
+		Fargren.Faction = ChaosRaiders;
+		Map.Units[2][2] = Fargren;
 
 		MapInstantiator.InstantiateMap(Map);
 	}

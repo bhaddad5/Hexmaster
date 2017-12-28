@@ -647,11 +647,14 @@ MonoBehaviour:
     Attack: 0
     Defense: 0
     Sprite: {fileID: 0}
-    HealthMax: 0
-    HealthCurr: 0
     UnitTypeName: 
     UnitName: 
-    CurrentTile: {x: 0, y: 0}
+    HealthMax: 0
+    HealthCurr: 0
+    CurrentPos:
+      X: 0
+      Z: 0
+      PlanetId: 
   UnitBacking: {fileID: 114616087246082080}
   UnitIcon: {fileID: 114350675576847264}
   FactionName: {fileID: 114807807088984546}
@@ -1249,7 +1252,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166883810529658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.200001, z: 0}
+  m_LocalPosition: {x: 0, y: -5.5, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 224908094114194388}
@@ -1257,7 +1260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -7.2}
+  m_AnchoredPosition: {x: 0, y: -5.5}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224514317060021650
@@ -1285,7 +1288,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993865555079226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -12.9, z: 0}
+  m_LocalPosition: {x: 0, y: -14.4, z: 0}
   m_LocalScale: {x: 0.15007503, y: 0.14999996, z: 0.14997508}
   m_Children: []
   m_Father: {fileID: 224908094114194388}
@@ -1293,7 +1296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12.9}
+  m_AnchoredPosition: {x: 0, y: -14.4}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224576082313470430

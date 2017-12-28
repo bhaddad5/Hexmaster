@@ -785,6 +785,7 @@ MonoBehaviour:
   City: {fileID: 21300000, guid: f86527cab5c2f4549ba9b6a43e28a7cf, type: 3}
   Forest: {fileID: 21300000, guid: 23d28e685fbc67947910fc78f3029e37, type: 3}
   Infantry: {fileID: 21300000, guid: 6f941b80a4eb6904ea1f5f9e41950142, type: 3}
+  Cavalry: {fileID: 21300000, guid: 8d5e4ede9fa838746ad080c4d8a853cc, type: 3}
 --- !u!4 &2037955051
 Transform:
   m_ObjectHideFlags: 0
