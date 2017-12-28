@@ -35,11 +35,19 @@ public class UnitView : MonoBehaviour
 		Model.HPChange += HandleHPPercentChange;
 
 		HandleHPPercentChange(Model.HealthCurr / Model.HealthMax);
+
+		Model.UpdateUnitPos += UpdateUnitPos;
+		UpdateUnitPos(Model.CurrentPos);
 	}
 
 	public void HandleHPPercentChange(float newHPPercent)
 	{
 		HPBar.fillAmount = newHPPercent;
 		HPBar.color = Color.Lerp(Color.red, Color.green, newHPPercent);
+	}
+
+	public void UpdateUnitPos(HexPos pos)
+	{
+		transform.position = MapInstantiator.GetHexPos(pos.X, pos.Z);
 	}
 }

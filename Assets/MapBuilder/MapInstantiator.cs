@@ -62,9 +62,8 @@ public class MapInstantiator : MonoBehaviour
 				if (unit != null)
 				{
 					UnitView newUnit = GameObject.Instantiate(UnitPrefab);
+					unit.CurrentPos = new HexPos(x, z);
 					newUnit.Model = unit;
-					newUnit.transform.position = GetHexPos(x, z);
-					newUnit.transform.position += new Vector3(0, 0.01f, 0);
 				}
 				z++;
 			}
@@ -72,7 +71,14 @@ public class MapInstantiator : MonoBehaviour
 		}
 	}
 
-	private static Vector3 GetHexPos(int x, int z)
+	public static void MoveUnit(UnitModel unit, HexPos newPos)
+	{
+		Model.Units[unit.CurrentPos.X][unit.CurrentPos.Z] = null;
+		Model.Units[newPos.X][newPos.Z] = unit;
+		unit.InvokeUpdateUnitPos(newPos);
+	}
+
+	public static Vector3 GetHexPos(int x, int z)
 	{
 		Vector3 position = new Vector3();
 		position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);

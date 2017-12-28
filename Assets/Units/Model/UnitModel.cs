@@ -17,13 +17,22 @@ public class UnitModel
 
 	public Sprite Sprite;
 
-	public float HealthMax;
-	public float HealthCurr;
-
 	public string UnitTypeName;
 	public string UnitName;
 
+	public float HealthMax;
+	public float HealthCurr;
 	public event Action<float> HPChange;
+	public void InvokeUpdateHP(float newHP)
+	{
+		HealthCurr = newHP;
+		HPChange.Invoke(newHP);
+	}
 
-	public Vector2 CurrentTile;
+	public HexPos CurrentPos;
+	public event Action<HexPos> UpdateUnitPos;
+	public void InvokeUpdateUnitPos(HexPos pos)
+	{
+		CurrentPos = pos;
+		UpdateUnitPos.Invoke(pos);}
 }
