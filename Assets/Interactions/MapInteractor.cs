@@ -36,7 +36,11 @@ public class MapInteractor : MonoBehaviour
 
 		Debug.Log("Selected " + CurrSelectedUnit.UnitName);
 
-		MapInstantiator.Model.Map[pos.X][pos.Z].HighlightHex(HexModel.HexHighlightTypes.Move);
+		var reachable = MapInstantiator.Model.Map[pos.X][pos.Z].ReachableHexes(unit.MovementCurr);
+		foreach (HexModel reachableHex in reachable)
+		{
+			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
+		}
 	}
 
 	private void ClearSelected()

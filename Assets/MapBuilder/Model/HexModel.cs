@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
+using NUnit.Framework;
 using UnityEngine;
 
 [Serializable]
@@ -54,5 +56,27 @@ public class HexModel
 	public void HighlightHex(HexHighlightTypes type)
 	{
 		TriggerHighlight.Invoke(type);
+	}
+
+	public List<HexModel> ReachableHexes(float movePoints)
+	{
+		HashSet<HexModel> reachable = new HashSet<HexModel>();
+
+		SortedDupList<HexModel> moveFrontier = new SortedDupList<HexModel>();
+		moveFrontier.Insert(this, movePoints);
+
+		while (moveFrontier.Count > 0)
+		{
+			HexModel first = moveFrontier.TopValue();
+			reachable.Add(first);
+			foreach (HexModel neighbor in first.Neighbors)
+			{
+				if(!moveFrontier.ContainsValue(neighbor) && !reachable.Contains(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0)
+					moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
+			}
+			moveFrontier.Pop();
+		}
+
+		return reachable.ToList();
 	}
 }
