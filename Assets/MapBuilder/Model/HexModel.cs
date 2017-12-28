@@ -58,9 +58,9 @@ public class HexModel
 		TriggerHighlight.Invoke(type);
 	}
 
-	public List<HexModel> ReachableHexes(float movePoints)
+	public Dictionary<HexModel, float> ReachableHexes(float movePoints)
 	{
-		HashSet<HexModel> reachable = new HashSet<HexModel>();
+		Dictionary<HexModel, float> reachable = new Dictionary<HexModel, float>();
 
 		SortedDupList<HexModel> moveFrontier = new SortedDupList<HexModel>();
 		moveFrontier.Insert(this, movePoints);
@@ -68,15 +68,15 @@ public class HexModel
 		while (moveFrontier.Count > 0)
 		{
 			HexModel first = moveFrontier.TopValue();
-			reachable.Add(first);
+			reachable[first] = moveFrontier.TopKey();
 			foreach (HexModel neighbor in first.Neighbors)
 			{
-				if(!moveFrontier.ContainsValue(neighbor) && !reachable.Contains(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0)
+				if(!moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0)
 					moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
 			}
 			moveFrontier.Pop();
 		}
 
-		return reachable.ToList();
+		return reachable;
 	}
 }

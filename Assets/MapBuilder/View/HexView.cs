@@ -4,7 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HexView : MonoBehaviour
+public interface IInteractableObject { }
+
+public class HexView : MonoBehaviour, IInteractableObject
 {
 	public HexModel HexModel;
 

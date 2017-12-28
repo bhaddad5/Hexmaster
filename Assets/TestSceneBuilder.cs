@@ -60,11 +60,16 @@ public class TestSceneBuilder : MonoBehaviour
 		};
 
 		MapModel Map = new MapModel();
-		Map.Map = new HexModel[4][];
-		Map.Map[0] = new[] { ForestHex, ForestHex, GrassHex, GrassHex };
-		Map.Map[1] = new[] { ForestHex, ForestHex, GrassHex, GrassHex };
-		Map.Map[2] = new[] { ForestHex, GrassHex, CityHex, GrassHex };
-		Map.Map[3] = new[] { GrassHex, GrassHex, CityHex, GrassHex };
+		Map.Map = new HexModel[][]
+		{
+			new[] { ForestHex, ForestHex, GrassHex, GrassHex, GrassHex },
+			new[] { ForestHex, ForestHex, GrassHex, GrassHex, GrassHex },
+			new[] { ForestHex, GrassHex, CityHex, GrassHex, GrassHex },
+			new[] { GrassHex, GrassHex, CityHex, GrassHex, GrassHex },
+			new[] { GrassHex, GrassHex, GrassHex, GrassHex, GrassHex },
+			new[] { GrassHex, ForestHex, GrassHex, GrassHex, GrassHex },
+			new[] { GrassHex, ForestHex, ForestHex, ForestHex, GrassHex }
+		};
 		Map.SetUpAdjacencies();
 
 		Map.Units = new UnitModel[Map.Map.Length][];
