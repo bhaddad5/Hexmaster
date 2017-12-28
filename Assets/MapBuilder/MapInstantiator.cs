@@ -86,4 +86,16 @@ public class MapInstantiator : MonoBehaviour
 		position.z = z * (HexMetrics.outerRadius * 1.5f);
 		return position;
 	}
+
+	public static void RefreshUnitMovements()
+	{
+		foreach (UnitModel[] units in Model.Units)
+		{
+			foreach (UnitModel unit in units)
+			{
+				if (unit != null)
+					unit.MovementCurr = unit.MovementMax;
+			}
+		}
+	}
 }

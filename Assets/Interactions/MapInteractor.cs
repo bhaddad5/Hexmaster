@@ -32,7 +32,6 @@ public class MapInteractor : MonoBehaviour
 					CurrSelectedUnit.MovementCurr = ReachableHexes[hex];
 					ClearSelected();
 					HandleNewUnitSelected(CurrSelectedUnit);
-					Debug.Log("Moving " + CurrSelectedUnit.UnitName + " to " + hex.Coord + ".  Movement = " + CurrSelectedUnit.MovementCurr);
 				}
 			}
 		}
@@ -57,8 +56,6 @@ public class MapInteractor : MonoBehaviour
 	{
 		CurrSelectedUnit = unit;
 
-		Debug.Log("Selected " + CurrSelectedUnit.UnitName);
-
 		ReachableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].ReachableHexes(unit.MovementCurr);
 		foreach (HexModel reachableHex in ReachableHexes.Keys)
 		{
@@ -73,5 +70,11 @@ public class MapInteractor : MonoBehaviour
 			hex.HighlightHex(HexModel.HexHighlightTypes.None);
 			ReachableHexes.Clear();
 		}
+	}
+
+	public void HandleEndTurn()
+	{
+		ClearSelected();
+		MapInstantiator.RefreshUnitMovements();
 	}
 }
