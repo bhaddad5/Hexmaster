@@ -6,6 +6,7 @@ public class MapInteractor : MonoBehaviour
 {
 	private UnitModel CurrSelectedUnit = null;
 	private Dictionary<HexModel, float> ReachableHexes = new Dictionary<HexModel, float>();
+	private List<HexModel> AttackableHexes = new List<HexModel>();
 
 	// Update is called once per frame
 	void Update ()
@@ -58,9 +59,11 @@ public class MapInteractor : MonoBehaviour
 
 		ReachableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].ReachableHexes(unit.MovementCurr);
 		foreach (HexModel reachableHex in ReachableHexes.Keys)
-		{
 			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
-		}
+
+		AttackableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].AttackableHexes(unit.MovementCurr);
+		foreach (HexModel attackableHex in AttackableHexes)
+			attackableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
 	}
 
 	private void ClearSelected()

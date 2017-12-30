@@ -85,7 +85,7 @@ public class TestSceneBuilder : MonoBehaviour
 		FactionModel KimernaPdf = new FactionModel()
 		{
 			FactionColor = new Color(.5f, .5f, .8f),
-			FactionName = "Kimerna Defense Force",
+			FactionName = "Kimerna PDF",
 		};
 
 		FactionModel ChaosRaiders = new FactionModel()

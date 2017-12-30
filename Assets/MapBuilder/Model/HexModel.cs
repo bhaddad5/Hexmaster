@@ -58,6 +58,17 @@ public class HexModel
 		TriggerHighlight.Invoke(type);
 	}
 
+	public List<HexModel> AttackableHexes(float movePoints)
+	{
+		List<HexModel> Attackable = new List<HexModel>();
+		foreach (HexModel neighbor in Neighbors)
+		{
+			if (movePoints - neighbor.MoveDifficulty >= 0 && neighbor.ContainsEnemy())
+				Attackable.Add(neighbor);
+		}
+		return Attackable;
+	}
+
 	public Dictionary<HexModel, float> ReachableHexes(float movePoints)
 	{
 		Dictionary<HexModel, float> reachable = new Dictionary<HexModel, float>();
@@ -74,7 +85,7 @@ public class HexModel
 				foreach (HexModel neighbor in first.Neighbors)
 				{
 					if (!moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0
-					    && !ContainsNonAlliedUnit())
+					    && !neighbor.ContainsNonAlliedUnit())
 						moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
 				}
 			}
