@@ -23,6 +23,11 @@ public class HexPos
 	{
 		return X + ", " + Z;
 	}
+
+	public override bool Equals(object obj)
+	{
+		return ((HexPos) obj).X == X && ((HexPos) obj).Z == Z;
+	}
 }
 
 [Serializable]

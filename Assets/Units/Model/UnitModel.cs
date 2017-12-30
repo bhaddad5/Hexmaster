@@ -26,7 +26,7 @@ public class UnitModel
 	public void InvokeUpdateHP(float newHP)
 	{
 		HealthCurr = newHP;
-		if (HealthCurr >= 0)
+		if (HealthCurr <= 0)
 		{
 			MapInstantiator.RemoveUnit(this);
 		}

@@ -27,10 +27,20 @@ public class MapInteractor : MonoBehaviour
 			HexModel hex = GetRaycastedHex();
 			if (hex != null)
 			{
-				if (CurrSelectedUnit != null && ReachableHexes.ContainsKey(hex))
+				if (CurrSelectedUnit != null)
 				{
-					MapInstantiator.MoveUnit(CurrSelectedUnit, hex.Coord);
-					CurrSelectedUnit.MovementCurr = ReachableHexes[hex];
+					if (ReachableHexes.ContainsKey(hex))
+					{
+						MapInstantiator.MoveUnit(CurrSelectedUnit, hex.Coord);
+						CurrSelectedUnit.MovementCurr = ReachableHexes[hex];
+					}
+					if (AttackableHexes.Contains(hex))
+					{
+						MapInstantiator.AttackHex(CurrSelectedUnit, hex.Coord);
+						if (CurrSelectedUnit.CurrentPos.Equals(hex.Coord))
+							CurrSelectedUnit.MovementCurr -= hex.MoveDifficulty;
+						else CurrSelectedUnit.MovementCurr = 0;
+					}
 					ClearSelected();
 					HandleNewUnitSelected(CurrSelectedUnit);
 				}
@@ -69,10 +79,9 @@ public class MapInteractor : MonoBehaviour
 	private void ClearSelected()
 	{
 		foreach (HexModel hex in MapInstantiator.Model.AllHexes())
-		{
 			hex.HighlightHex(HexModel.HexHighlightTypes.None);
-			ReachableHexes.Clear();
-		}
+		ReachableHexes.Clear();
+		AttackableHexes.Clear();
 	}
 
 	public void HandleEndTurn()

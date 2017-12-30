@@ -78,6 +78,21 @@ public class MapInstantiator : MonoBehaviour
 		unit.InvokeUpdateUnitPos(newPos);
 	}
 
+	public static void AttackHex(UnitModel unit, HexPos posToAttack)
+	{
+		UnitModel HostileUnit = Model.GetUnit(posToAttack);
+		HandleCombat(unit, HostileUnit, Model.GetHex(posToAttack));
+		if (Model.GetUnit(posToAttack) == null)
+		{
+			MoveUnit(unit, posToAttack);
+		}
+	}
+
+	private static void HandleCombat(UnitModel attacker, UnitModel defender, HexModel location)
+	{
+		defender.InvokeUpdateHP(defender.HealthCurr - 0.1f);
+	}
+
 	public static Vector3 GetHexPos(int x, int z)
 	{
 		Vector3 position = new Vector3();
