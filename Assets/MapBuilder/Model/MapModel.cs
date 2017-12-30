@@ -27,6 +27,16 @@ public class MapModel
 		}
 	}
 
+	public HexModel GetHex(HexPos pos)
+	{
+		return Map[pos.X][pos.Z];
+	}
+
+	public UnitModel GetUnit(HexPos pos)
+	{
+		return Units[pos.X][pos.Z];
+	}
+
 	public List<HexModel> AllHexes()
 	{
 		List<HexModel> hexes = new List<HexModel>();

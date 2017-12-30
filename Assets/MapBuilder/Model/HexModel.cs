@@ -69,14 +69,57 @@ public class HexModel
 		{
 			HexModel first = moveFrontier.TopValue();
 			reachable[first] = moveFrontier.TopKey();
-			foreach (HexModel neighbor in first.Neighbors)
+			if (!first.BordersEnemy() || first.ContainsAlly())
 			{
-				if(!moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0)
-					moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
+				foreach (HexModel neighbor in first.Neighbors)
+				{
+					if (!moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0
+					    && !ContainsNonAlliedUnit())
+						moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
+				}
 			}
 			moveFrontier.Pop();
 		}
 
+		List<HexModel> keysToRemove = new List<HexModel>();
+		foreach (HexModel hex in reachable.Keys)
+		{
+			if(hex.ContainsUnit())
+				keysToRemove.Add(hex);
+		}
+		foreach (HexModel hexToRemove in keysToRemove)
+			reachable.Remove(hexToRemove);
+
 		return reachable;
+	}
+
+	public bool ContainsUnit()
+	{
+		return MapInstantiator.Model.GetUnit(Coord) != null;
+	}
+
+	public bool ContainsAlly()
+	{
+		return ContainsUnit() && MapInstantiator.Model.GetUnit(Coord).Faction.PlayerControlAllowed();
+	}
+
+	public bool ContainsNonAlliedUnit()
+	{
+		return ContainsUnit() && !MapInstantiator.Model.GetUnit(Coord).Faction.PlayerControlAllowed();
+	}
+
+	public bool ContainsEnemy()
+	{
+		return ContainsUnit() && MapInstantiator.Model.GetUnit(Coord).Faction.EnemyOfPlayer();
+	}
+
+	public bool BordersEnemy()
+	{
+		foreach (HexModel neighbor in Neighbors)
+		{
+			if (neighbor.ContainsEnemy())
+				return true;
+		}
+		return false;
 	}
 }

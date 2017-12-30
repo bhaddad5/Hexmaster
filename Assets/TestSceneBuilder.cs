@@ -79,15 +79,29 @@ public class TestSceneBuilder : MonoBehaviour
 		{
 			FactionColor = new Color(.1f, .5f, .1f),
 			FactionName = "Imperium of Man",
-			PlayerControlled = true
+			MainPlayerFaction = true,
+		};
+
+		FactionModel KimernaPdf = new FactionModel()
+		{
+			FactionColor = new Color(.5f, .5f, .8f),
+			FactionName = "Kimerna Defense Force",
 		};
 
 		FactionModel ChaosRaiders = new FactionModel()
 		{
 			FactionColor = new Color(.9f, .1f, .1f),
 			FactionName = "Chaos Raiders",
-			PlayerControlled = true
 		};
+
+		Imperium.Allies = new List<FactionModel>() {KimernaPdf};
+		Imperium.Enemies = new List<FactionModel>() {ChaosRaiders};
+
+		KimernaPdf.Allies = new List<FactionModel>() { Imperium };
+		KimernaPdf.Enemies = new List<FactionModel>() { ChaosRaiders };
+
+		ChaosRaiders.Allies = new List<FactionModel>() {  };
+		ChaosRaiders.Enemies = new List<FactionModel>() { KimernaPdf, Imperium };
 
 		MapModel Map = new MapModel();
 		Map.Map = new HexModel[][]
@@ -113,7 +127,7 @@ public class TestSceneBuilder : MonoBehaviour
 
 		var KimernaKnights = ImperialRoughRider;
 		KimernaKnights.UnitName = "4<sup>th</sup> Knights of Kimerthas";
-		KimernaKnights.Faction = Imperium;
+		KimernaKnights.Faction = KimernaPdf;
 		Map.Units[3][4] = KimernaKnights;
 
 		var Gorlak = TraitorRoughRider;
@@ -124,7 +138,7 @@ public class TestSceneBuilder : MonoBehaviour
 
 		var Fargren = TraitorGuard;
 		Fargren.UnitName = "Fargren's Rifles";
-		Fargren.HealthCurr = 0.4f;
+		Fargren.HealthCurr = 0.1f;
 		Fargren.Faction = ChaosRaiders;
 		Map.Units[2][2] = Fargren;
 

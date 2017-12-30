@@ -98,4 +98,23 @@ public class MapInstantiator : MonoBehaviour
 			}
 		}
 	}
+
+	public static void RemoveUnit(UnitModel unitToRemove)
+	{
+		int x = 0;
+		foreach (UnitModel[] units in Model.Units)
+		{
+			int z = 0;
+			foreach (UnitModel unit in units)
+			{
+				if (unit == unitToRemove)
+				{
+					Model.Units[x][z] = null;
+					return;
+				}
+				z++;
+			}
+			x++;
+		}
+	}
 }

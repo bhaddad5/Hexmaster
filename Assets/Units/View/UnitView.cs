@@ -44,6 +44,11 @@ public class UnitView : MonoBehaviour
 	{
 		HPBar.fillAmount = newHPPercent;
 		HPBar.color = Color.Lerp(Color.red, Color.green, newHPPercent);
+
+		if (newHPPercent <= 0)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	public void UpdateUnitPos(HexPos pos)
