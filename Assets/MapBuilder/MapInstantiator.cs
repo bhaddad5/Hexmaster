@@ -88,9 +88,14 @@ public class MapInstantiator : MonoBehaviour
 		}
 	}
 
+	private const float DmgScale = 0.5f;
 	private static void HandleCombat(UnitModel attacker, UnitModel defender, HexModel location)
 	{
-		defender.InvokeUpdateHP(defender.HealthCurr - 0.1f);
+		float defenderDamage = DmgScale * (attacker.GetAttackValue() / defender.GetDefenseValue());
+		defender.InvokeUpdateHP(defender.HealthCurr - defenderDamage);
+
+		float attackerDamage = DmgScale * (defender.GetDefenseValue() / attacker.GetAttackValue());
+		attacker.InvokeUpdateHP(attacker.HealthCurr - attackerDamage);
 	}
 
 	public static Vector3 GetHexPos(int x, int z)

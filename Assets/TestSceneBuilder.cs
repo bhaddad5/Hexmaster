@@ -17,10 +17,10 @@ public class TestSceneBuilder : MonoBehaviour
 
 	private UnitModel ImperialGuard { get { return new UnitModel()
 	{
-		Attack = 1f,
-		Defense = 3f,
-		HealthCurr = 1f,
-		HealthMax = 1f,
+		Attack = 5f,
+		Defense = 9f,
+		HealthCurr = 5f,
+		HealthMax = 5f,
 		MovementCurr = 1f,
 		MovementMax = 1f,
 		Sprite = Infantry,
@@ -29,48 +29,39 @@ public class TestSceneBuilder : MonoBehaviour
 
 	private UnitModel ImperialRoughRider{get{return new UnitModel()
 	{
-		Attack = 2f,
-		Defense = 1f,
-		HealthCurr = 1f,
-		HealthMax = 1f,
+		Attack = 9f,
+		Defense = 4f,
+		HealthCurr = 4f,
+		HealthMax = 4f,
 		MovementCurr = 2f,
 		MovementMax = 2f,
 		Sprite = Cavalry,
 		UnitTypeName = "Rough Riders"
 	};}}
 
-	private UnitModel TraitorGuard
+	private UnitModel TraitorGuard{get { return new UnitModel()
 	{
-		get { return new UnitModel()
-			{
-				Attack = 1f,
-				Defense = 2f,
-				HealthCurr = 1f,
-				HealthMax = 1f,
-				MovementCurr = 1f,
-				MovementMax = 1f,
-				Sprite = Infantry,
-				UnitTypeName = "Traitor Infantry"
-		};
-		}
-	}
-	private UnitModel TraitorRoughRider
+		Attack = 6f,
+		Defense = 7f,
+		HealthCurr = 5f,
+		HealthMax = 5f,
+		MovementCurr = 1f,
+		MovementMax = 1f,
+		Sprite = Infantry,
+		UnitTypeName = "Traitor Infantry"
+	};}}
+
+	private UnitModel TraitorRoughRider{get{return new UnitModel()
 	{
-		get
-		{
-			return new UnitModel()
-			{
-				Attack = 2f,
-				Defense = 1f,
-				HealthCurr = 1f,
-				HealthMax = 1f,
-				MovementCurr = 2f,
-				MovementMax = 2f,
-				Sprite = Cavalry,
-				UnitTypeName = "Chaos Raiders"
-			};
-		}
-	}
+		Attack = 9f,
+		Defense = 4f,
+		HealthCurr = 4f,
+		HealthMax = 4f,
+		MovementCurr = 2f,
+		MovementMax = 2f,
+		Sprite = Cavalry,
+		UnitTypeName = "Chaos Raiders"
+	};}}
 
 	// Use this for initialization
 	void Start ()
@@ -126,19 +117,19 @@ public class TestSceneBuilder : MonoBehaviour
 		Map.Units[1][2] = T503;
 
 		var KimernaKnights = ImperialRoughRider;
-		KimernaKnights.UnitName = "4<sup>th</sup> Knights of Kimerthas";
+		KimernaKnights.UnitName = "4<sup>th</sup> Kimernas Lancers";
 		KimernaKnights.Faction = KimernaPdf;
 		Map.Units[3][4] = KimernaKnights;
 
 		var Gorlak = TraitorRoughRider;
 		Gorlak.UnitName = "Gorlaks Reavers";
-		Gorlak.HealthCurr = 0.9f;
+		Gorlak.HealthCurr = 2.9f;
 		Gorlak.Faction = ChaosRaiders;
 		Map.Units[2][3] = Gorlak;
 
 		var Fargren = TraitorGuard;
 		Fargren.UnitName = "Fargren's Rifles";
-		Fargren.HealthCurr = 0.1f;
+		Fargren.HealthCurr = 4.1f;
 		Fargren.Faction = ChaosRaiders;
 		Map.Units[2][2] = Fargren;
 

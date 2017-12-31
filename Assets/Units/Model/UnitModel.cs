@@ -15,6 +15,16 @@ public class UnitModel
 	public float Attack;
 	public float Defense;
 
+	public float GetAttackValue()
+	{
+		return Attack;
+	}
+
+	public float GetDefenseValue()
+	{
+		return Defense + MapInstantiator.Model.GetHex(CurrentPos).DefenseMod;
+	}
+
 	public Sprite Sprite;
 
 	public string UnitTypeName;
@@ -30,7 +40,7 @@ public class UnitModel
 		{
 			MapInstantiator.RemoveUnit(this);
 		}
-		HPChange.Invoke(newHP);
+		HPChange.Invoke(HealthCurr/HealthMax);
 	}
 
 	public HexPos CurrentPos;
