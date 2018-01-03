@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using NUnit.Framework;
 using UnityEngine;
 
 [Serializable]
@@ -90,6 +86,8 @@ public class HexModel
 					    currHexMoveRemaining - neighbor.MoveDifficulty >= 0)
 					{
 						if (currHex.BordersEnemy(faction) && !neighbor.ContainsEnemy(faction) && !neighbor.ContainsAlly(faction) && neighbor.BordersEnemy(faction))
+							continue;
+						if(currHex.ContainsAlly(faction) && currHex != this && neighbor.ContainsEnemy(faction))
 							continue;
 						moveFrontier.Insert(neighbor, currHexMoveRemaining - neighbor.MoveDifficulty);
 					}
