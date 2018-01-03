@@ -46,6 +46,15 @@ public class MapInteractor : MonoBehaviour
 				}
 			}
 		}
+
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			HexView[] hexViews = FindObjectsOfType(typeof(HexView)) as HexView[];
+			foreach (HexView hexView in hexViews)
+			{
+				hexView.ToggleCoordinates();
+			}
+		}
 	}
 
 	private HexModel GetRaycastedHex()

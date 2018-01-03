@@ -32,4 +32,9 @@ public class HexView : MonoBehaviour, IInteractableObject
 		if (highlight == HexModel.HexHighlightTypes.Attack)
 			HexBorder.color = Color.red;
 	}
+
+	public void ToggleCoordinates()
+	{
+		CoordText.gameObject.SetActive(!CoordText.gameObject.activeSelf);
+	}
 }

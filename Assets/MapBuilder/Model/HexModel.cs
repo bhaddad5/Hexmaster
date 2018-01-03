@@ -89,8 +89,8 @@ public class HexModel
 			{
 				foreach (HexModel neighbor in first.Neighbors)
 				{
-					if (!moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0
-					    && !neighbor.ContainsNonAlliedUnit())
+					if (neighbor.MoveDifficulty >= 0 && !moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && 
+						moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0 && !neighbor.ContainsNonAlliedUnit())
 						moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
 				}
 			}
