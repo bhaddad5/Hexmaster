@@ -31,6 +31,8 @@ public class HexView : MonoBehaviour, IInteractableObject
 			HexBorder.color = Color.green;
 		if (highlight == HexModel.HexHighlightTypes.Attack)
 			HexBorder.color = Color.red;
+		if (highlight == HexModel.HexHighlightTypes.PotentialAttack)
+			HexBorder.color = new Color(0.5f, 0, 0);
 	}
 
 	public void ToggleCoordinates()

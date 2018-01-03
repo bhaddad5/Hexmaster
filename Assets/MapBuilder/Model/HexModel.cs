@@ -53,7 +53,8 @@ public class HexModel
 	{
 		None,
 		Move,
-		Attack
+		Attack,
+		PotentialAttack
 	}
 
 	public event Action<HexHighlightTypes> TriggerHighlight;
@@ -63,50 +64,54 @@ public class HexModel
 		TriggerHighlight.Invoke(type);
 	}
 
-	public List<HexModel> AttackableHexes(float movePoints, FactionModel faction)
+	public MoveOptions PossibleMoves(float movePoints, FactionModel faction)
 	{
-		List<HexModel> Attackable = new List<HexModel>();
-		foreach (HexModel neighbor in Neighbors)
-		{
-			if (movePoints - neighbor.MoveDifficulty >= 0 && neighbor.ContainsEnemy(faction))
-				Attackable.Add(neighbor);
-		}
-		return Attackable;
-	}
-
-	public Dictionary<HexModel, float> ReachableHexes(float movePoints, FactionModel faction)
-	{
-		Dictionary<HexModel, float> reachable = new Dictionary<HexModel, float>();
+		MoveOptions possibleMoves = new MoveOptions();
 
 		SortedDupList<HexModel> moveFrontier = new SortedDupList<HexModel>();
 		moveFrontier.Insert(this, movePoints);
 
 		while (moveFrontier.Count > 0)
 		{
-			HexModel first = moveFrontier.TopValue();
-			reachable[first] = moveFrontier.TopKey();
-			if (!first.BordersEnemy(faction) || first.ContainsAlly(faction))
+			HexModel currHex = moveFrontier.TopValue();
+			float currHexMoveRemaining = moveFrontier.TopKey();
+			possibleMoves.Movable[currHex] = currHexMoveRemaining;
+			if (!currHex.ContainsEnemy(faction))
 			{
-				foreach (HexModel neighbor in first.Neighbors)
+				foreach (HexModel neighbor in currHex.Neighbors)
 				{
-					if (neighbor.MoveDifficulty >= 0 && !moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && 
-						moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0 && !neighbor.ContainsNonAlliedUnit(faction))
-						moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
+					if (neighbor.MoveDifficulty >= 0 && !moveFrontier.ContainsValue(neighbor) &&
+					    !possibleMoves.Movable.ContainsKey(neighbor) &&
+					    currHexMoveRemaining - neighbor.MoveDifficulty >= 0)
+					{
+						if (currHex.BordersEnemy(faction) && !neighbor.ContainsEnemy(faction) && !neighbor.ContainsAlly(faction) && neighbor.BordersEnemy(faction))
+							continue;
+						moveFrontier.Insert(neighbor, currHexMoveRemaining - neighbor.MoveDifficulty);
+					}
 				}
 			}
 			moveFrontier.Pop();
 		}
 
-		List<HexModel> keysToRemove = new List<HexModel>();
-		foreach (HexModel hex in reachable.Keys)
+		List<HexModel> hexesWithUnits = new List<HexModel>();
+		foreach (HexModel hex in possibleMoves.Movable.Keys)
 		{
 			if(hex.ContainsUnit())
-				keysToRemove.Add(hex);
+				hexesWithUnits.Add(hex);
 		}
-		foreach (HexModel hexToRemove in keysToRemove)
-			reachable.Remove(hexToRemove);
+		foreach (HexModel hexToRemove in hexesWithUnits)
+		{
+			float reachableVal = possibleMoves.Movable[hexToRemove];
+			possibleMoves.Movable.Remove(hexToRemove);
+			if (hexToRemove.ContainsEnemy(faction))
+			{
+				if (Neighbors.Contains(hexToRemove))
+					possibleMoves.Attackable[hexToRemove] = reachableVal;
+				else possibleMoves.PotentialAttacks[hexToRemove] = reachableVal;
+			}
+		}
 
-		return reachable;
+		return possibleMoves;
 	}
 
 	public bool ContainsUnit()

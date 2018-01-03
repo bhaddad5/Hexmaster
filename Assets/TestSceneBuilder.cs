@@ -11,8 +11,8 @@ public class TestSceneBuilder : MonoBehaviour
 	public Sprite Mountain;
 
 	private HexModel GrassHex { get { return new HexModel(.5f, 0f, Grass); } }
-	private HexModel ForestHex { get { return new HexModel(.9f, 1f, Forest); } }
-	private HexModel CityHex { get { return new HexModel(.5f, 3f, City); } }
+	private HexModel ForestHex { get { return new HexModel(.75f, 1f, Forest); } }
+	private HexModel CityHex { get { return new HexModel(.5f, 2f, City); } }
 	private HexModel OceanHex { get { return new HexModel(-1f, 0f, Ocean); } }
 	private HexModel MountainHex { get { return new HexModel(-1f, 4f, Mountain); } }
 

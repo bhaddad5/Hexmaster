@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class MoveOptions
+{
+	public Dictionary<HexModel, float> Movable = new Dictionary<HexModel, float>();
+	public Dictionary<HexModel, float> Attackable = new Dictionary<HexModel, float>();
+	public Dictionary<HexModel, float> PotentialAttacks = new Dictionary<HexModel, float>();
+}
+
 public class MapInteractor : MonoBehaviour
 {
 	private UnitModel CurrSelectedUnit = null;
-	private Dictionary<HexModel, float> ReachableHexes = new Dictionary<HexModel, float>();
-	private List<HexModel> AttackableHexes = new List<HexModel>();
+	private MoveOptions moveOptions = new MoveOptions();
 
 	// Update is called once per frame
 	void Update ()
@@ -29,12 +35,12 @@ public class MapInteractor : MonoBehaviour
 			{
 				if (CurrSelectedUnit != null)
 				{
-					if (ReachableHexes.ContainsKey(hex))
+					if (moveOptions.Movable.ContainsKey(hex))
 					{
 						MapInstantiator.MoveUnit(CurrSelectedUnit, hex.Coord);
-						CurrSelectedUnit.MovementCurr = ReachableHexes[hex];
+						CurrSelectedUnit.MovementCurr = moveOptions.Movable[hex];
 					}
-					if (AttackableHexes.Contains(hex))
+					if (moveOptions.Attackable.ContainsKey(hex))
 					{
 						MapInstantiator.AttackHex(CurrSelectedUnit, hex.Coord);
 						if (CurrSelectedUnit.CurrentPos.Equals(hex.Coord))
@@ -76,21 +82,22 @@ public class MapInteractor : MonoBehaviour
 	{
 		CurrSelectedUnit = unit;
 
-		ReachableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].ReachableHexes(unit.MovementCurr, unit.Faction);
-		foreach (HexModel reachableHex in ReachableHexes.Keys)
+		moveOptions = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].PossibleMoves(unit.MovementCurr, unit.Faction);
+		foreach (HexModel reachableHex in moveOptions.Movable.Keys)
 			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
-
-		AttackableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].AttackableHexes(unit.MovementCurr, unit.Faction);
-		foreach (HexModel attackableHex in AttackableHexes)
-			attackableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
+		foreach (HexModel reachableHex in moveOptions.Attackable.Keys)
+			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
+		foreach (HexModel reachableHex in moveOptions.PotentialAttacks.Keys)
+			reachableHex.HighlightHex(HexModel.HexHighlightTypes.PotentialAttack);
 	}
 
 	private void ClearSelected()
 	{
 		foreach (HexModel hex in MapInstantiator.Model.AllHexes())
 			hex.HighlightHex(HexModel.HexHighlightTypes.None);
-		ReachableHexes.Clear();
-		AttackableHexes.Clear();
+		moveOptions.Movable.Clear();
+		moveOptions.Attackable.Clear();
+		moveOptions.PotentialAttacks.Clear();
 	}
 
 	public void HandleEndTurn()
