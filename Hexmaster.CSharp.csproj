@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -219,11 +217,11 @@
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
-    <Reference Include="TextMeshPro-2017.2-1.0.56-Runtime">
-      <HintPath>Assets\ThirdPartyContent\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.2-1.0.56-Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="TextMeshPro-2017.2-1.0.56-Editor">
       <HintPath>Assets\ThirdPartyContent\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.2-1.0.56-Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.2-1.0.56-Runtime">
+      <HintPath>Assets\ThirdPartyContent\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.2-1.0.56-Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +267,7 @@
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Units\Model\FactionModel.cs" />
+    <Compile Include="Assets\Units\Model\UnitAIHandler.cs" />
     <Compile Include="Assets\Units\Model\UnitModel.cs" />
     <Compile Include="Assets\Units\View\UnitView.cs" />
   </ItemGroup>

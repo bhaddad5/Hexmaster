@@ -73,18 +73,17 @@ public class MapInstantiator : MonoBehaviour
 
 	public static void MoveUnit(UnitModel unit, HexPos newPos)
 	{
-		Model.Units[unit.CurrentPos.X][unit.CurrentPos.Z] = null;
-		Model.Units[newPos.X][newPos.Z] = unit;
-		unit.InvokeUpdateUnitPos(newPos);
-	}
-
-	public static void AttackHex(UnitModel unit, HexPos posToAttack)
-	{
-		UnitModel HostileUnit = Model.GetUnit(posToAttack);
-		HandleCombat(unit, HostileUnit, Model.GetHex(posToAttack));
-		if (Model.GetUnit(posToAttack) == null)
+		if (Model.GetUnit(newPos) != null && Model.GetUnit(newPos) != unit)
 		{
-			MoveUnit(unit, posToAttack);
+			HandleCombat(unit, Model.GetUnit(newPos), Model.GetHex(newPos));
+			if (Model.GetUnit(newPos) == null)
+				MoveUnit(unit, newPos);
+		}
+		else
+		{
+			Model.Units[unit.CurrentPos.X][unit.CurrentPos.Z] = null;
+			Model.Units[newPos.X][newPos.Z] = unit;
+			unit.InvokeUpdateUnitPos(newPos);
 		}
 	}
 
@@ -105,6 +104,18 @@ public class MapInstantiator : MonoBehaviour
 		position.y = 0f;
 		position.z = z * (HexMetrics.outerRadius * 1.5f);
 		return position;
+	}
+
+	public static void ExecuteUnitAI()
+	{
+		foreach (UnitModel[] units in Model.Units)
+		{
+			foreach (UnitModel unit in units)
+			{
+				if (unit != null && !unit.Faction.PlayerControlAllowed())
+					UnitAIHandler.ExecuteAIMove(unit);
+			}
+		}
 	}
 
 	public static void RefreshUnitMovements()

@@ -28,6 +28,11 @@ public class HexPos
 	{
 		return ((HexPos) obj).X == X && ((HexPos) obj).Z == Z;
 	}
+
+	public override int GetHashCode()
+	{
+		return base.GetHashCode();
+	}
 }
 
 [Serializable]

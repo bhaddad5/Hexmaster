@@ -15,6 +15,8 @@ public class UnitModel
 	public float Attack;
 	public float Defense;
 
+	public float Aggression;
+
 	public float GetAttackValue()
 	{
 		return Attack;

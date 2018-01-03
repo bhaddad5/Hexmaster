@@ -25,6 +25,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 5f,
 		Defense = 7f,
+		Aggression = 0f,
 		HealthCurr = 5f,
 		HealthMax = 5f,
 		MovementCurr = 1f,
@@ -37,6 +38,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 3f,
 		Defense = 4f,
+		Aggression = 0f,
 		HealthCurr = 4f,
 		HealthMax = 4f,
 		MovementCurr = 1f,
@@ -49,6 +51,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 8f,
 		Defense = 3f,
+		Aggression = 2f,
 		HealthCurr = 3f,
 		HealthMax = 3f,
 		MovementCurr = 1f,
@@ -61,6 +64,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 9f,
 		Defense = 7f,
+		Aggression = 3f,
 		HealthCurr = 6f,
 		HealthMax = 6f,
 		MovementCurr = 2f,
@@ -73,6 +77,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 7f,
 		Defense = 4f,
+		Aggression = 2f,
 		HealthCurr = 4f,
 		HealthMax = 4f,
 		MovementCurr = 2f,
@@ -85,6 +90,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 6f,
 		Defense = 6f,
+		Aggression = 2f,
 		HealthCurr = 5f,
 		HealthMax = 5f,
 		MovementCurr = 1f,
@@ -97,6 +103,7 @@ public class TestSceneBuilder : MonoBehaviour
 	{
 		Attack = 9f,
 		Defense = 3f,
+		Aggression = 2f,
 		HealthCurr = 4f,
 		HealthMax = 4f,
 		MovementCurr = 2f,

@@ -42,7 +42,7 @@ public class MapInteractor : MonoBehaviour
 					}
 					if (moveOptions.Attackable.ContainsKey(hex))
 					{
-						MapInstantiator.AttackHex(CurrSelectedUnit, hex.Coord);
+						MapInstantiator.MoveUnit(CurrSelectedUnit, hex.Coord);
 						if (CurrSelectedUnit.CurrentPos.Equals(hex.Coord))
 							CurrSelectedUnit.MovementCurr -= hex.MoveDifficulty;
 						else CurrSelectedUnit.MovementCurr = 0;
@@ -103,6 +103,7 @@ public class MapInteractor : MonoBehaviour
 	public void HandleEndTurn()
 	{
 		ClearSelected();
+		MapInstantiator.ExecuteUnitAI();
 		MapInstantiator.RefreshUnitMovements();
 	}
 }
