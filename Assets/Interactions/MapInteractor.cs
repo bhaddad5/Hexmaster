@@ -76,11 +76,11 @@ public class MapInteractor : MonoBehaviour
 	{
 		CurrSelectedUnit = unit;
 
-		ReachableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].ReachableHexes(unit.MovementCurr);
+		ReachableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].ReachableHexes(unit.MovementCurr, unit.Faction);
 		foreach (HexModel reachableHex in ReachableHexes.Keys)
 			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
 
-		AttackableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].AttackableHexes(unit.MovementCurr);
+		AttackableHexes = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].AttackableHexes(unit.MovementCurr, unit.Faction);
 		foreach (HexModel attackableHex in AttackableHexes)
 			attackableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
 	}

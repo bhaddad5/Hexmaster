@@ -18,11 +18,13 @@ public class TestSceneBuilder : MonoBehaviour
 
 	public Sprite Infantry;
 	public Sprite Cavalry;
+	public Sprite Artillery;
+	public Sprite Armor;
 
 	private UnitModel ImperialGuard { get { return new UnitModel()
 	{
 		Attack = 5f,
-		Defense = 9f,
+		Defense = 7f,
 		HealthCurr = 5f,
 		HealthMax = 5f,
 		MovementCurr = 1f,
@@ -34,7 +36,7 @@ public class TestSceneBuilder : MonoBehaviour
 	private UnitModel ImperialPDF { get { return new UnitModel()
 	{
 		Attack = 3f,
-		Defense = 5f,
+		Defense = 4f,
 		HealthCurr = 4f,
 		HealthMax = 4f,
 		MovementCurr = 1f,
@@ -43,9 +45,33 @@ public class TestSceneBuilder : MonoBehaviour
 		UnitTypeName = "PDF Regiment"
 	}; } }
 
-	private UnitModel ImperialRoughRider{get{return new UnitModel()
+	private UnitModel ImperialArtillery { get { return new UnitModel()
+	{
+		Attack = 8f,
+		Defense = 3f,
+		HealthCurr = 3f,
+		HealthMax = 3f,
+		MovementCurr = 1f,
+		MovementMax = 1f,
+		Sprite = Artillery,
+		UnitTypeName = "Artillery Regiment"
+	}; } }
+
+	private UnitModel ImperialArmor { get { return new UnitModel()
 	{
 		Attack = 9f,
+		Defense = 7f,
+		HealthCurr = 6f,
+		HealthMax = 6f,
+		MovementCurr = 2f,
+		MovementMax = 2f,
+		Sprite = Armor,
+		UnitTypeName = "Armored Regiment"
+	}; } }
+
+	private UnitModel ImperialRoughRider{get{return new UnitModel()
+	{
+		Attack = 7f,
 		Defense = 4f,
 		HealthCurr = 4f,
 		HealthMax = 4f,
@@ -58,7 +84,7 @@ public class TestSceneBuilder : MonoBehaviour
 	private UnitModel TraitorGuard{get { return new UnitModel()
 	{
 		Attack = 6f,
-		Defense = 7f,
+		Defense = 6f,
 		HealthCurr = 5f,
 		HealthMax = 5f,
 		MovementCurr = 1f,
@@ -70,7 +96,7 @@ public class TestSceneBuilder : MonoBehaviour
 	private UnitModel TraitorRoughRider{get{return new UnitModel()
 	{
 		Attack = 9f,
-		Defense = 4f,
+		Defense = 3f,
 		HealthCurr = 4f,
 		HealthMax = 4f,
 		MovementCurr = 2f,
@@ -118,7 +144,7 @@ public class TestSceneBuilder : MonoBehaviour
 			new[] { ForestHex, GrassHex, CityHex, GrassHex, ForestHex, ForestHex, OceanHex },
 			new[] { GrassHex, GrassHex, CityHex, GrassHex, ForestHex, ForestHex, OceanHex },
 			new[] { GrassHex, GrassHex, GrassHex, GrassHex, GrassHex, ForestHex, OceanHex },
-			new[] { GrassHex, ForestHex, GrassHex, GrassHex, GrassHex, OceanHex, OceanHex },
+			new[] { GrassHex, ForestHex, GrassHex, GrassHex, CityHex, OceanHex, OceanHex },
 			new[] { GrassHex, ForestHex, ForestHex, ForestHex, GrassHex, OceanHex, OceanHex },
 			new[] { GrassHex, ForestHex, MountainHex, MountainHex, GrassHex, OceanHex, OceanHex },
 			new[] { GrassHex, MountainHex, MountainHex, ForestHex, MountainHex, OceanHex, OceanHex }
@@ -132,12 +158,17 @@ public class TestSceneBuilder : MonoBehaviour
 		var T503 = ImperialGuard;
 		T503.UnitName = "Thracian 503<sup>rd</sup>";
 		T503.Faction = Imperium;
-		Map.Units[0][2] = T503;
+		Map.Units[0][4] = T503;
 
-		var T513 = ImperialGuard;
+		var T513 = ImperialArmor;
 		T513.UnitName = "Thracian 513<sup>th</sup>";
 		T513.Faction = Imperium;
 		Map.Units[0][3] = T513;
+
+		var T523 = ImperialArtillery;
+		T523.UnitName = "Thracian 523<sup>rd</sup>";
+		T523.Faction = Imperium;
+		Map.Units[0][2] = T523;
 
 		var T1224 = ImperialGuard;
 		T1224.UnitName = "Thracian 1224<sup>th</sup>";
@@ -182,6 +213,11 @@ public class TestSceneBuilder : MonoBehaviour
 		K_PDF_4.UnitName = "4<sup>th</sup> Kimernas PDF";
 		K_PDF_4.Faction = ChaosRaiders;
 		Map.Units[3][1] = K_PDF_4;
+
+		var K_PDF_16 = ImperialPDF;
+		K_PDF_16.UnitName = "16<sup>th</sup> Kimernas PDF";
+		K_PDF_16.Faction = ChaosRaiders;
+		Map.Units[5][4] = K_PDF_16;
 
 		MapInstantiator.InstantiateMap(Map);
 	}

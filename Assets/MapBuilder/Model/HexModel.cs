@@ -63,18 +63,18 @@ public class HexModel
 		TriggerHighlight.Invoke(type);
 	}
 
-	public List<HexModel> AttackableHexes(float movePoints)
+	public List<HexModel> AttackableHexes(float movePoints, FactionModel faction)
 	{
 		List<HexModel> Attackable = new List<HexModel>();
 		foreach (HexModel neighbor in Neighbors)
 		{
-			if (movePoints - neighbor.MoveDifficulty >= 0 && neighbor.ContainsEnemy())
+			if (movePoints - neighbor.MoveDifficulty >= 0 && neighbor.ContainsEnemy(faction))
 				Attackable.Add(neighbor);
 		}
 		return Attackable;
 	}
 
-	public Dictionary<HexModel, float> ReachableHexes(float movePoints)
+	public Dictionary<HexModel, float> ReachableHexes(float movePoints, FactionModel faction)
 	{
 		Dictionary<HexModel, float> reachable = new Dictionary<HexModel, float>();
 
@@ -85,12 +85,12 @@ public class HexModel
 		{
 			HexModel first = moveFrontier.TopValue();
 			reachable[first] = moveFrontier.TopKey();
-			if (!first.BordersEnemy() || first.ContainsAlly())
+			if (!first.BordersEnemy(faction) || first.ContainsAlly(faction))
 			{
 				foreach (HexModel neighbor in first.Neighbors)
 				{
 					if (neighbor.MoveDifficulty >= 0 && !moveFrontier.ContainsValue(neighbor) && !reachable.ContainsKey(neighbor) && 
-						moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0 && !neighbor.ContainsNonAlliedUnit())
+						moveFrontier.TopKey() - neighbor.MoveDifficulty >= 0 && !neighbor.ContainsNonAlliedUnit(faction))
 						moveFrontier.Insert(neighbor, moveFrontier.TopKey() - neighbor.MoveDifficulty);
 				}
 			}
@@ -114,26 +114,28 @@ public class HexModel
 		return MapInstantiator.Model.GetUnit(Coord) != null;
 	}
 
-	public bool ContainsAlly()
+	public bool ContainsAlly(FactionModel faction)
 	{
-		return ContainsUnit() && MapInstantiator.Model.GetUnit(Coord).Faction.PlayerControlAllowed();
+		return ContainsUnit() && 
+			(MapInstantiator.Model.GetUnit(Coord).Faction == faction || MapInstantiator.Model.GetUnit(Coord).Faction.Allies.Contains(faction));
 	}
 
-	public bool ContainsNonAlliedUnit()
+	public bool ContainsNonAlliedUnit(FactionModel faction)
 	{
-		return ContainsUnit() && !MapInstantiator.Model.GetUnit(Coord).Faction.PlayerControlAllowed();
+		return ContainsUnit() && 
+			!(MapInstantiator.Model.GetUnit(Coord).Faction == faction || MapInstantiator.Model.GetUnit(Coord).Faction.Allies.Contains(faction));
 	}
 
-	public bool ContainsEnemy()
+	public bool ContainsEnemy(FactionModel faction)
 	{
-		return ContainsUnit() && MapInstantiator.Model.GetUnit(Coord).Faction.EnemyOfPlayer();
+		return ContainsUnit() && MapInstantiator.Model.GetUnit(Coord).Faction.Enemies.Contains(faction);
 	}
 
-	public bool BordersEnemy()
+	public bool BordersEnemy(FactionModel faction)
 	{
 		foreach (HexModel neighbor in Neighbors)
 		{
-			if (neighbor.ContainsEnemy())
+			if (neighbor.ContainsEnemy(faction))
 				return true;
 		}
 		return false;
