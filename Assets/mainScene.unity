@@ -791,6 +791,8 @@ MonoBehaviour:
   Forest: {fileID: 21300000, guid: 23d28e685fbc67947910fc78f3029e37, type: 3}
   Ocean: {fileID: 21300000, guid: 6ce284c59518765439922555345d168b, type: 3}
   Mountain: {fileID: 21300000, guid: 60fb0d54d7251374fb49d225f16fde0d, type: 3}
+  Space: {fileID: 21300000, guid: 55a7b0ea51a3c6e42a3dd4696e9133bb, type: 3}
+  WarpStorm: {fileID: 21300000, guid: 72411b3e3d9b6c44f9b88e62dd9acd62, type: 3}
   Infantry: {fileID: 21300000, guid: 6f941b80a4eb6904ea1f5f9e41950142, type: 3}
   Cavalry: {fileID: 21300000, guid: 8d5e4ede9fa838746ad080c4d8a853cc, type: 3}
   Artillery: {fileID: 21300000, guid: 5bb0d0a46eeced945a0bb03f7ea947ae, type: 3}
