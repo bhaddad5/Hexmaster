@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class UnitModel
+public class HexOccupier
+{
+	public HexPos CurrentPos;
+}
+
+[Serializable]
+public class UnitModel : HexOccupier
 {
 	[NonSerialized]
 	public FactionModel Faction;
@@ -24,7 +30,7 @@ public class UnitModel
 
 	public float GetDefenseValue()
 	{
-		return Defense + MapInstantiator.Model.GetHex(CurrentPos).DefenseMod;
+		return Defense + MapController.Model.GetHex(CurrentPos).DefenseMod;
 	}
 
 	public Sprite Sprite;
@@ -40,12 +46,11 @@ public class UnitModel
 		HealthCurr = newHP;
 		if (HealthCurr <= 0)
 		{
-			MapInstantiator.RemoveUnit(this);
+			MapController.RemoveUnit(this);
 		}
 		HPChange.Invoke(HealthCurr/HealthMax);
 	}
 
-	public HexPos CurrentPos;
 	public event Action<HexPos> UpdateUnitPos;
 	public void InvokeUpdateUnitPos(HexPos pos)
 	{

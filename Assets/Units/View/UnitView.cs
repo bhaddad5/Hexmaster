@@ -53,6 +53,6 @@ public class UnitView : MonoBehaviour
 
 	public void UpdateUnitPos(HexPos pos)
 	{
-		transform.position = MapInstantiator.GetHexPos(pos.X, pos.Z);
+		transform.position = MapInstantiator.GetHexWorldPos(pos);
 	}
 }

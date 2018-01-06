@@ -16,7 +16,7 @@ public static class UnitAIHandler
 
 	public static void ExecuteAIMove(UnitModel unit)
 	{
-		HexModel hex = MapInstantiator.Model.GetHex(unit.CurrentPos);
+		HexModel hex = MapController.Model.GetHex(unit.CurrentPos);
 
 		MoveOptions possibleMoves = hex.PossibleMoves(unit.MovementCurr, unit.Faction);
 
@@ -30,7 +30,7 @@ public static class UnitAIHandler
 
 		foreach (HexModel potentialAttack in possibleMoves.Attackable.Keys)
 		{
-			UnitModel UnitToAttack = MapInstantiator.Model.GetUnit(potentialAttack.Coord);
+			UnitModel UnitToAttack = MapController.Model.GetUnit(potentialAttack.Coord);
 			RankedMoves.Insert(new UnitMoves(potentialAttack), hex.DefenseMod + GetAttackGoodness(unit, UnitToAttack));
 		}
 
@@ -41,7 +41,7 @@ public static class UnitAIHandler
 				if (pair.Value - attackableNeighbor.MoveDifficulty >= 0 &&
 					attackableNeighbor.ContainsEnemy(unit.Faction))
 				{
-					UnitModel UnitToAttack = MapInstantiator.Model.GetUnit(attackableNeighbor.Coord);
+					UnitModel UnitToAttack = MapController.Model.GetUnit(attackableNeighbor.Coord);
 					RankedMoves.Insert(new UnitMoves(pair.Key, attackableNeighbor), pair.Key.DefenseMod + GetAttackGoodness(unit, UnitToAttack));
 				}
 			}
@@ -73,7 +73,7 @@ public static class UnitAIHandler
 	{
 		foreach (HexModel move in chosenMoves.Moves)
 		{
-			MapInstantiator.MoveUnit(unit, move.Coord);
+			MapController.MoveUnit(unit, move.Coord);
 		}
 	}
 }

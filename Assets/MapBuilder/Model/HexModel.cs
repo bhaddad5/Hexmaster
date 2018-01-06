@@ -39,6 +39,8 @@ public class HexModel
 	[NonSerialized]
 	public HexPos Coord;
 
+	public List<HexOccupier> Occupants = new List<HexOccupier>();
+
 	public float MoveDifficulty;
 	public float DefenseMod;
 	public Sprite Sprite;
@@ -119,24 +121,24 @@ public class HexModel
 
 	public bool ContainsUnit()
 	{
-		return MapInstantiator.Model.GetUnit(Coord) != null;
+		return MapController.Model.GetUnit(Coord) != null;
 	}
 
 	public bool ContainsAlly(FactionModel faction)
 	{
 		return ContainsUnit() && 
-			(MapInstantiator.Model.GetUnit(Coord).Faction == faction || MapInstantiator.Model.GetUnit(Coord).Faction.Allies.Contains(faction));
+			(MapController.Model.GetUnit(Coord).Faction == faction || MapController.Model.GetUnit(Coord).Faction.Allies.Contains(faction));
 	}
 
 	public bool ContainsNonAlliedUnit(FactionModel faction)
 	{
 		return ContainsUnit() && 
-			!(MapInstantiator.Model.GetUnit(Coord).Faction == faction || MapInstantiator.Model.GetUnit(Coord).Faction.Allies.Contains(faction));
+			!(MapController.Model.GetUnit(Coord).Faction == faction || MapController.Model.GetUnit(Coord).Faction.Allies.Contains(faction));
 	}
 
 	public bool ContainsEnemy(FactionModel faction)
 	{
-		return ContainsUnit() && MapInstantiator.Model.GetUnit(Coord).Faction.Enemies.Contains(faction);
+		return ContainsUnit() && MapController.Model.GetUnit(Coord).Faction.Enemies.Contains(faction);
 	}
 
 	public bool BordersEnemy(FactionModel faction)

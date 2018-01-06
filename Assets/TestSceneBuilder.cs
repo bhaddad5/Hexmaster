@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TestSceneBuilder : MonoBehaviour
 {
+	public MapInstantiator Instantiator;
+
 	public Sprite Grass;
 	public Sprite City;
 	public Sprite Forest;
@@ -143,8 +145,7 @@ public class TestSceneBuilder : MonoBehaviour
 		ChaosRaiders.Allies = new List<FactionModel>() {  };
 		ChaosRaiders.Enemies = new List<FactionModel>() { KimernaPdf, Imperium };
 
-		MapModel Map = new MapModel();
-		Map.Map = new HexModel[][]
+		var planetMap = new HexModel[][]
 		{
 			new[] { ForestHex, ForestHex, GrassHex, GrassHex, GrassHex, OceanHex, OceanHex },
 			new[] { ForestHex, ForestHex, GrassHex, GrassHex, GrassHex, OceanHex, OceanHex },
@@ -156,47 +157,42 @@ public class TestSceneBuilder : MonoBehaviour
 			new[] { GrassHex, ForestHex, MountainHex, MountainHex, GrassHex, OceanHex, OceanHex },
 			new[] { GrassHex, MountainHex, MountainHex, ForestHex, MountainHex, OceanHex, OceanHex }
 		};
-		Map.SetUpAdjacencies();
-
-		Map.Units = new UnitModel[Map.Map.Length][];
-		for (int i = 0; i < Map.Units.Length; i++)
-			Map.Units[i] = new UnitModel[Map.Map[0].Length];
 
 		var T503 = ImperialGuard;
 		T503.UnitName = "Thracian 503<sup>rd</sup>";
 		T503.Faction = Imperium;
-		Map.Units[0][4] = T503;
+		planetMap[0][4].Occupants.Add(T503);
 
 		var T513 = ImperialArmor;
 		T513.UnitName = "Thracian 513<sup>th</sup>";
 		T513.Faction = Imperium;
-		Map.Units[0][3] = T513;
+		planetMap[0][3].Occupants.Add(T513);
 
 		var T523 = ImperialArtillery;
 		T523.UnitName = "Thracian 523<sup>rd</sup>";
 		T523.Faction = Imperium;
-		Map.Units[0][2] = T523;
+		planetMap[0][2].Occupants.Add(T523);
 
 		var T1224 = ImperialGuard;
 		T1224.UnitName = "Thracian 1224<sup>th</sup>";
 		T1224.Faction = Imperium;
-		Map.Units[0][1] = T1224;
+		planetMap[0][1].Occupants.Add(T1224);
 
 
 		var KimernaKnights = ImperialRoughRider;
 		KimernaKnights.UnitName = "4<sup>th</sup> Kimernas Lancers";
 		KimernaKnights.Faction = KimernaPdf;
-		Map.Units[5][0] = KimernaKnights;
+		planetMap[5][0].Occupants.Add(KimernaKnights);
 
 		var K_PDF_35 = ImperialPDF;
 		K_PDF_35.UnitName = "35<sup>th</sup> Kimernas PDF";
 		K_PDF_35.Faction = KimernaPdf;
-		Map.Units[5][1] = K_PDF_35;
+		planetMap[5][1].Occupants.Add(K_PDF_35);
 
 		var K_PDF_15 = ImperialPDF;
 		K_PDF_15.UnitName = "15<sup>th</sup> Kimernas PDF";
 		K_PDF_15.Faction = KimernaPdf;
-		Map.Units[6][0] = K_PDF_15;
+		planetMap[6][0].Occupants.Add(K_PDF_15);
 
 
 
@@ -204,28 +200,28 @@ public class TestSceneBuilder : MonoBehaviour
 		Gorlak.UnitName = "Gorlak's Reavers";
 		Gorlak.HealthCurr = 2.9f;
 		Gorlak.Faction = ChaosRaiders;
-		Map.Units[2][3] = Gorlak;
+		planetMap[2][3].Occupants.Add(Gorlak);
 
 		var DoK8 = TraitorGuard;
 		DoK8.UnitName = "8<sup>th</sup> Desciples of Karnor";
 		DoK8.Faction = ChaosRaiders;
-		Map.Units[2][2] = DoK8;
+		planetMap[2][2].Occupants.Add(DoK8);
 
 		var K_PDF_67 = ImperialPDF;
 		K_PDF_67.UnitName = "67<sup>th</sup> Kimernas PDF";
 		K_PDF_67.Faction = ChaosRaiders;
-		Map.Units[3][2] = K_PDF_67;
+		planetMap[3][2].Occupants.Add(K_PDF_67);
 
 		var K_PDF_4 = ImperialPDF;
 		K_PDF_4.UnitName = "4<sup>th</sup> Kimernas PDF";
 		K_PDF_4.Faction = ChaosRaiders;
-		Map.Units[3][1] = K_PDF_4;
+		planetMap[3][1].Occupants.Add(K_PDF_4);
 
 		var K_PDF_16 = ImperialPDF;
 		K_PDF_16.UnitName = "16<sup>th</sup> Kimernas PDF";
 		K_PDF_16.Faction = ChaosRaiders;
-		Map.Units[5][4] = K_PDF_16;
+		planetMap[5][4].Occupants.Add(K_PDF_16);
 
-		MapInstantiator.InstantiateMap(Map);
+		Instantiator.InstantiateMap(planetMap);
 	}
 }

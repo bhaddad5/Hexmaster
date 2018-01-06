@@ -23,8 +23,8 @@ public class MapInteractor : MonoBehaviour
 			HexModel hex = GetRaycastedHex();
 			if (hex != null)
 			{
-				var unit = MapInstantiator.Model.Units[hex.Coord.X][hex.Coord.Z];
-				if (unit != null)
+				var unit = MapController.Model.GetUnit(hex.Coord);
+				if (unit != null && unit.Faction.PlayerControlAllowed())
 					HandleNewUnitSelected(unit);
 			}
 		}
@@ -37,12 +37,12 @@ public class MapInteractor : MonoBehaviour
 				{
 					if (moveOptions.Movable.ContainsKey(hex))
 					{
-						MapInstantiator.MoveUnit(CurrSelectedUnit, hex.Coord);
+						MapController.MoveUnit(CurrSelectedUnit, hex.Coord);
 						CurrSelectedUnit.MovementCurr = moveOptions.Movable[hex];
 					}
 					if (moveOptions.Attackable.ContainsKey(hex))
 					{
-						MapInstantiator.MoveUnit(CurrSelectedUnit, hex.Coord);
+						MapController.MoveUnit(CurrSelectedUnit, hex.Coord);
 						if (CurrSelectedUnit.CurrentPos.Equals(hex.Coord))
 							CurrSelectedUnit.MovementCurr -= hex.MoveDifficulty;
 						else CurrSelectedUnit.MovementCurr = 0;
@@ -82,7 +82,7 @@ public class MapInteractor : MonoBehaviour
 	{
 		CurrSelectedUnit = unit;
 
-		moveOptions = MapInstantiator.Model.Map[unit.CurrentPos.X][unit.CurrentPos.Z].PossibleMoves(unit.MovementCurr, unit.Faction);
+		moveOptions = MapController.Model.GetHex(unit.CurrentPos).PossibleMoves(unit.MovementCurr, unit.Faction);
 		foreach (HexModel reachableHex in moveOptions.Movable.Keys)
 			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
 		foreach (HexModel reachableHex in moveOptions.Attackable.Keys)
@@ -93,7 +93,7 @@ public class MapInteractor : MonoBehaviour
 
 	private void ClearSelected()
 	{
-		foreach (HexModel hex in MapInstantiator.Model.AllHexes())
+		foreach (HexModel hex in MapController.Model.AllHexes())
 			hex.HighlightHex(HexModel.HexHighlightTypes.None);
 		moveOptions.Movable.Clear();
 		moveOptions.Attackable.Clear();
@@ -103,7 +103,7 @@ public class MapInteractor : MonoBehaviour
 	public void HandleEndTurn()
 	{
 		ClearSelected();
-		MapInstantiator.ExecuteUnitAI();
-		MapInstantiator.RefreshUnitMovements();
+		MapController.ExecuteUnitAI();
+		MapController.RefreshUnitMovements();
 	}
 }
