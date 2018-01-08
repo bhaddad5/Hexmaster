@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -293,12 +291,20 @@
     <Compile Include="Assets\Interactions\CameraControls.cs" />
     <Compile Include="Assets\Interactions\Helpers.cs" />
     <Compile Include="Assets\Interactions\MapInteractor.cs" />
+    <Compile Include="Assets\Interactions\SelectedPlanetController.cs" />
     <Compile Include="Assets\Interactions\SelectedUnitController.cs" />
+    <Compile Include="Assets\MapBuilder\Hexes\Model\HexGridModel.cs" />
+    <Compile Include="Assets\MapBuilder\Hexes\Model\HexModel.cs" />
+    <Compile Include="Assets\MapBuilder\Hexes\View\HexView.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Planets\Model\PlanetModel.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Planets\View\PlanetView.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Planets\View\Rotator.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Units\Model\FactionModel.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Units\Model\UnitAIHandler.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Units\Model\UnitModel.cs" />
+    <Compile Include="Assets\MapBuilder\HexOccupants\Units\View\UnitView.cs" />
     <Compile Include="Assets\MapBuilder\MapController.cs" />
     <Compile Include="Assets\MapBuilder\MapInstantiator.cs" />
-    <Compile Include="Assets\MapBuilder\Model\HexGridModel.cs" />
-    <Compile Include="Assets\MapBuilder\Model\HexModel.cs" />
-    <Compile Include="Assets\MapBuilder\View\HexView.cs" />
     <Compile Include="Assets\TestSceneBuilder.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -332,10 +338,6 @@
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\Units\Model\FactionModel.cs" />
-    <Compile Include="Assets\Units\Model\UnitAIHandler.cs" />
-    <Compile Include="Assets\Units\Model\UnitModel.cs" />
-    <Compile Include="Assets\Units\View\UnitView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ThirdPartyContent\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />

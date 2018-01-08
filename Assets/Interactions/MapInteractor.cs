@@ -1,31 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MoveOptions
-{
-	public Dictionary<HexModel, float> Movable = new Dictionary<HexModel, float>();
-	public Dictionary<HexModel, float> Attackable = new Dictionary<HexModel, float>();
-	public Dictionary<HexModel, float> PotentialAttacks = new Dictionary<HexModel, float>();
-}
+﻿using UnityEngine;
 
 public class MapInteractor : MonoBehaviour
 {
-	private UnitModel CurrSelectedUnit = null;
-	private MoveOptions moveOptions = new MoveOptions();
+	private SelectedUnitController SelectedUnitController = new SelectedUnitController();
+	private SelectedPlanetController SelectedPlanetController = new SelectedPlanetController();
 
 	// Update is called once per frame
 	void Update ()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			ClearSelected();
+			SelectedUnitController.ClearSelectedUnit();
 			HexModel hex = GetRaycastedHex();
 			if (hex != null)
 			{
-				var unit = MapController.Model.GetUnit(hex.Coord);
-				if (unit != null && unit.Faction.PlayerControlAllowed())
-					HandleNewUnitSelected(unit);
+				HandleHexSelection(hex);
 			}
 		}
 		if (Input.GetMouseButtonDown(1))
@@ -33,23 +22,7 @@ public class MapInteractor : MonoBehaviour
 			HexModel hex = GetRaycastedHex();
 			if (hex != null)
 			{
-				if (CurrSelectedUnit != null)
-				{
-					if (moveOptions.Movable.ContainsKey(hex))
-					{
-						MapController.MoveUnit(CurrSelectedUnit, hex.Coord);
-						CurrSelectedUnit.MovementCurr = moveOptions.Movable[hex];
-					}
-					if (moveOptions.Attackable.ContainsKey(hex))
-					{
-						MapController.MoveUnit(CurrSelectedUnit, hex.Coord);
-						if (CurrSelectedUnit.CurrentPos.Equals(hex.Coord))
-							CurrSelectedUnit.MovementCurr -= hex.MoveDifficulty;
-						else CurrSelectedUnit.MovementCurr = 0;
-					}
-					ClearSelected();
-					HandleNewUnitSelected(CurrSelectedUnit);
-				}
+				
 			}
 		}
 
@@ -78,32 +51,31 @@ public class MapInteractor : MonoBehaviour
 		return null;
 	}
 
-	private void HandleNewUnitSelected(UnitModel unit)
+	private void HandleHexSelection(HexModel hex)
 	{
-		CurrSelectedUnit = unit;
-
-		moveOptions = MapController.Model.GetHex(unit.CurrentPos).PossibleMoves(unit.MovementCurr, unit.Faction);
-		foreach (HexModel reachableHex in moveOptions.Movable.Keys)
-			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
-		foreach (HexModel reachableHex in moveOptions.Attackable.Keys)
-			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
-		foreach (HexModel reachableHex in moveOptions.PotentialAttacks.Keys)
-			reachableHex.HighlightHex(HexModel.HexHighlightTypes.PotentialAttack);
-	}
-
-	private void ClearSelected()
-	{
-		foreach (HexModel hex in MapController.Model.AllHexes())
-			hex.HighlightHex(HexModel.HexHighlightTypes.None);
-		moveOptions.Movable.Clear();
-		moveOptions.Attackable.Clear();
-		moveOptions.PotentialAttacks.Clear();
+		foreach (HexOccupier occupant in hex.Occupants)
+		{
+			if (occupant is UnitModel)
+			{
+				if(((UnitModel)occupant).Faction.PlayerControlAllowed())
+					SelectedUnitController.HandleNewUnitSelected((UnitModel)occupant);
+			}
+			if (occupant is PlanetModel)
+			{
+				SelectedPlanetController.HandleNewSelectedPlanet((PlanetModel)occupant);
+			}
+		}
 	}
 
 	public void HandleEndTurn()
 	{
-		ClearSelected();
+		SelectedUnitController.ClearSelectedUnit();
 		MapController.ExecuteUnitAI();
 		MapController.RefreshUnitMovements();
+	}
+
+	public void ViewSelectedPlanet()
+	{
+		SelectedPlanetController.ViewSelectedPlanet();
 	}
 }

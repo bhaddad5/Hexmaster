@@ -157,12 +157,12 @@ public class TestSceneBuilder : MonoBehaviour
 			new []{SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex},
 			new []{SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex},
 			new []{SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex},
-			new []{SpaceHex, SpaceHex, WarpStormHex, WarpStormHex, WarpStormHex, WarpStormHex, SpaceHex, SpaceHex, WarpStormHex, SpaceHex},
+			new []{SpaceHex, SpaceHex, WarpStormHex, SpaceHex, WarpStormHex, WarpStormHex, SpaceHex, SpaceHex, WarpStormHex, SpaceHex},
 			new []{SpaceHex, WarpStormHex, WarpStormHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, WarpStormHex, SpaceHex},
 			new []{SpaceHex, WarpStormHex, WarpStormHex, SpaceHex, SpaceHex, SpaceHex, SpaceHex, WarpStormHex, WarpStormHex, SpaceHex},
 		};
 
-		HexModel[][] Kimerna = new HexModel[][]
+		HexModel[][] KimernaMap = new HexModel[][]
 		{
 			new[] { ForestHex, ForestHex, GrassHex, GrassHex, GrassHex, OceanHex, OceanHex },
 			new[] { ForestHex, ForestHex, GrassHex, GrassHex, GrassHex, OceanHex, OceanHex },
@@ -175,41 +175,47 @@ public class TestSceneBuilder : MonoBehaviour
 			new[] { GrassHex, MountainHex, MountainHex, ForestHex, MountainHex, OceanHex, OceanHex }
 		};
 
+		PlanetModel KimernaPlanet = new PlanetModel(KimernaMap)
+		{
+			PlanetName = "Kimerna"
+		};
+		Galaxy[2][3].Occupants.Add(KimernaPlanet);
+
 		var T503 = ImperialGuard;
 		T503.UnitName = "Thracian 503<sup>rd</sup>";
 		T503.Faction = Imperium;
-		Kimerna[0][4].Occupants.Add(T503);
+		KimernaMap[0][4].Occupants.Add(T503);
 
 		var T513 = ImperialArmor;
 		T513.UnitName = "Thracian 513<sup>th</sup>";
 		T513.Faction = Imperium;
-		Kimerna[0][3].Occupants.Add(T513);
+		KimernaMap[0][3].Occupants.Add(T513);
 
 		var T523 = ImperialArtillery;
 		T523.UnitName = "Thracian 523<sup>rd</sup>";
 		T523.Faction = Imperium;
-		Kimerna[0][2].Occupants.Add(T523);
+		KimernaMap[0][2].Occupants.Add(T523);
 
 		var T1224 = ImperialGuard;
 		T1224.UnitName = "Thracian 1224<sup>th</sup>";
 		T1224.Faction = Imperium;
-		Kimerna[0][1].Occupants.Add(T1224);
+		KimernaMap[0][1].Occupants.Add(T1224);
 
 
 		var KimernaKnights = ImperialRoughRider;
 		KimernaKnights.UnitName = "4<sup>th</sup> Kimernas Lancers";
 		KimernaKnights.Faction = KimernaPdf;
-		Kimerna[5][0].Occupants.Add(KimernaKnights);
+		KimernaMap[5][0].Occupants.Add(KimernaKnights);
 
 		var K_PDF_35 = ImperialPDF;
 		K_PDF_35.UnitName = "35<sup>th</sup> Kimernas PDF";
 		K_PDF_35.Faction = KimernaPdf;
-		Kimerna[5][1].Occupants.Add(K_PDF_35);
+		KimernaMap[5][1].Occupants.Add(K_PDF_35);
 
 		var K_PDF_15 = ImperialPDF;
 		K_PDF_15.UnitName = "15<sup>th</sup> Kimernas PDF";
 		K_PDF_15.Faction = KimernaPdf;
-		Kimerna[6][0].Occupants.Add(K_PDF_15);
+		KimernaMap[6][0].Occupants.Add(K_PDF_15);
 
 
 
@@ -217,27 +223,27 @@ public class TestSceneBuilder : MonoBehaviour
 		Gorlak.UnitName = "Gorlak's Reavers";
 		Gorlak.HealthCurr = 2.9f;
 		Gorlak.Faction = ChaosRaiders;
-		Kimerna[2][3].Occupants.Add(Gorlak);
+		KimernaMap[2][3].Occupants.Add(Gorlak);
 
 		var DoK8 = TraitorGuard;
 		DoK8.UnitName = "8<sup>th</sup> Desciples of Karnor";
 		DoK8.Faction = ChaosRaiders;
-		Kimerna[2][2].Occupants.Add(DoK8);
+		KimernaMap[2][2].Occupants.Add(DoK8);
 
 		var K_PDF_67 = ImperialPDF;
 		K_PDF_67.UnitName = "67<sup>th</sup> Kimernas PDF";
 		K_PDF_67.Faction = ChaosRaiders;
-		Kimerna[3][2].Occupants.Add(K_PDF_67);
+		KimernaMap[3][2].Occupants.Add(K_PDF_67);
 
 		var K_PDF_4 = ImperialPDF;
 		K_PDF_4.UnitName = "4<sup>th</sup> Kimernas PDF";
 		K_PDF_4.Faction = ChaosRaiders;
-		Kimerna[3][1].Occupants.Add(K_PDF_4);
+		KimernaMap[3][1].Occupants.Add(K_PDF_4);
 
 		var K_PDF_16 = ImperialPDF;
 		K_PDF_16.UnitName = "16<sup>th</sup> Kimernas PDF";
 		K_PDF_16.Faction = ChaosRaiders;
-		Kimerna[5][4].Occupants.Add(K_PDF_16);
+		KimernaMap[5][4].Occupants.Add(K_PDF_16);
 
 		Instantiator.InstantiateMap(Galaxy);
 	}

@@ -5,6 +5,7 @@ public class MapInstantiator : MonoBehaviour
 {
 	public HexView HexPrefab;
 	public UnitView UnitPrefab;
+	public PlanetView PlanetPrefab;
 
 	public void InstantiateMap(HexModel[][] model)
 	{
@@ -33,6 +34,12 @@ public class MapInstantiator : MonoBehaviour
 				UnitView newUnit = GameObject.Instantiate(UnitPrefab);
 				occupant.CurrentPos = pos;
 				newUnit.Model = (UnitModel)occupant;
+			}
+			if (occupant is PlanetModel)
+			{
+				PlanetView newPlanet = GameObject.Instantiate(PlanetPrefab);
+				occupant.CurrentPos = pos;
+				newPlanet.Model = (PlanetModel) occupant;
 			}
 		}
 	}
