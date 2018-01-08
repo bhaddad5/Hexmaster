@@ -10,7 +10,6 @@ public class MapInteractor : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			SelectedUnitController.ClearSelectedUnit();
 			HexModel hex = GetRaycastedHex();
 			if (hex != null)
 			{
@@ -22,7 +21,7 @@ public class MapInteractor : MonoBehaviour
 			HexModel hex = GetRaycastedHex();
 			if (hex != null)
 			{
-				
+				SelectedUnitController.MoveAttempted(hex);
 			}
 		}
 
@@ -53,6 +52,8 @@ public class MapInteractor : MonoBehaviour
 
 	private void HandleHexSelection(HexModel hex)
 	{
+		SelectedUnitController.HandleNewUnitSelected(null);
+
 		foreach (HexOccupier occupant in hex.Occupants)
 		{
 			if (occupant is UnitModel)
@@ -69,7 +70,8 @@ public class MapInteractor : MonoBehaviour
 
 	public void HandleEndTurn()
 	{
-		SelectedUnitController.ClearSelectedUnit();
+		SelectedUnitController.HandleNewUnitSelected(null);
+		UIController.CloseAllUI();
 		MapController.ExecuteUnitAI();
 		MapController.RefreshUnitMovements();
 	}

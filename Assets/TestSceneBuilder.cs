@@ -177,7 +177,8 @@ public class TestSceneBuilder : MonoBehaviour
 
 		PlanetModel KimernaPlanet = new PlanetModel(KimernaMap)
 		{
-			PlanetName = "Kimerna"
+			PlanetName = "Kimerna",
+			PlanetSize = 0.5f
 		};
 		Galaxy[2][3].Occupants.Add(KimernaPlanet);
 

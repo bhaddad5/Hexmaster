@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlanetModel : HexOccupier
 {
 	public string PlanetName;
+	public float PlanetSize;
 
 	private HexGridModel Map;
 

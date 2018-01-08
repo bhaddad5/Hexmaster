@@ -3,21 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 [Serializable]
-public class GalaxyModel
-{
-	private HexGridModel Map;
-
-	public GalaxyModel(HexModel[][] map)
-	{
-		Map = new HexGridModel(map);
-	}
-
-	public HexModel GetHex(HexPos pos) { return Map.GetHex(pos); }
-	public UnitModel GetUnit(HexPos pos) { return Map.GetUnit(pos); }
-	public List<HexModel> AllHexes() { return Map.AllHexes(); }
-}
-
-[Serializable]
 public class HexGridModel
 {
 	private HexModel[][] Map;
@@ -96,5 +81,11 @@ public class HexGridModel
 		if(x < Map.Length && x >= 0 &&
 			z < Map[0].Length && z >= 0)
 			hex.Neighbors.Add(Map[x][z]);
+	}
+
+	public void ClearAllHighlights()
+	{
+		foreach (HexModel hex in AllHexes())
+			hex.HighlightHex(HexModel.HexHighlightTypes.None);
 	}
 }

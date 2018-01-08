@@ -1,6 +1,6 @@
 ﻿public static class MapController
 {
-	public static GalaxyModel Model;
+	public static HexGridModel Model;
 
 	public static void MoveUnit(UnitModel unit, HexPos newPos)
 	{

@@ -9,7 +9,7 @@ public class MapInstantiator : MonoBehaviour
 
 	public void InstantiateMap(HexModel[][] model)
 	{
-		MapController.Model = new GalaxyModel(model);
+		MapController.Model = new HexGridModel(model);
 		InstantiateHexes();
 	}
 

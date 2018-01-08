@@ -7,6 +7,7 @@ public class SelectedPlanetController
 	public void HandleNewSelectedPlanet(PlanetModel planet)
 	{
 		CurrentSelectedPlanet = planet;
+		UIController.OpenPlanetUI(planet);
 	}
 
 	public void ViewSelectedPlanet()

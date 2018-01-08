@@ -293,6 +293,7 @@
     <Compile Include="Assets\Interactions\MapInteractor.cs" />
     <Compile Include="Assets\Interactions\SelectedPlanetController.cs" />
     <Compile Include="Assets\Interactions\SelectedUnitController.cs" />
+    <Compile Include="Assets\Interactions\UIController.cs" />
     <Compile Include="Assets\MapBuilder\Hexes\Model\HexGridModel.cs" />
     <Compile Include="Assets\MapBuilder\Hexes\Model\HexModel.cs" />
     <Compile Include="Assets\MapBuilder\Hexes\View\HexView.cs" />

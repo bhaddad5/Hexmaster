@@ -30,28 +30,33 @@ public class SelectedUnitController
 					CurrSelectedUnit.MovementCurr -= hex.MoveDifficulty;
 				else CurrSelectedUnit.MovementCurr = 0;
 			}
-			ClearSelectedUnit();
 			HandleNewUnitSelected(CurrSelectedUnit);
 		}
 	}
 
 	public void HandleNewUnitSelected(UnitModel unit)
 	{
+		UIController.CloseAllUI();
+		ClearSelectedUnit();
 		CurrSelectedUnit = unit;
 
-		moveOptions = MapController.Model.GetHex(unit.CurrentPos).PossibleMoves(unit.MovementCurr, unit.Faction);
-		foreach (HexModel reachableHex in moveOptions.Movable.Keys)
-			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
-		foreach (HexModel reachableHex in moveOptions.Attackable.Keys)
-			reachableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
-		foreach (HexModel reachableHex in moveOptions.PotentialAttacks.Keys)
-			reachableHex.HighlightHex(HexModel.HexHighlightTypes.PotentialAttack);
+		if (unit != null)
+		{
+			UIController.OpenUnitUI(unit);
+
+			moveOptions = MapController.Model.GetHex(unit.CurrentPos).PossibleMoves(unit.MovementCurr, unit.Faction);
+			foreach (HexModel reachableHex in moveOptions.Movable.Keys)
+				reachableHex.HighlightHex(HexModel.HexHighlightTypes.Move);
+			foreach (HexModel reachableHex in moveOptions.Attackable.Keys)
+				reachableHex.HighlightHex(HexModel.HexHighlightTypes.Attack);
+			foreach (HexModel reachableHex in moveOptions.PotentialAttacks.Keys)
+				reachableHex.HighlightHex(HexModel.HexHighlightTypes.PotentialAttack);
+		}
 	}
 
-	public void ClearSelectedUnit()
+	private void ClearSelectedUnit()
 	{
-		foreach (HexModel hex in MapController.Model.AllHexes())
-			hex.HighlightHex(HexModel.HexHighlightTypes.None);
+		MapController.Model.ClearAllHighlights();
 		moveOptions.Movable.Clear();
 		moveOptions.Attackable.Clear();
 		moveOptions.PotentialAttacks.Clear();

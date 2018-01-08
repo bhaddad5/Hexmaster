@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 33998713010014964}
   - component: {fileID: 135290711892958034}
   - component: {fileID: 23113448187808956}
+  - component: {fileID: 114980479795974468}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -102,8 +103,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993487571205512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4491280329235128}
   m_RootOrder: 0
@@ -165,7 +166,9 @@ MonoBehaviour:
       X: 0
       Z: 0
     PlanetName: 
+    PlanetSize: 0
   PlanetName: {fileID: 114832013584348322}
+  PlanetTransform: {fileID: 4693086675643980}
 --- !u!114 &114832013584348322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,6 +318,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114980479795974468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993487571205512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51147f17648cc041a241cb56e58e206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135290711892958034
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -387,6 +401,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -41.3}
+  m_AnchoredPosition: {x: 0, y: -18.4}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
