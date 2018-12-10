@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class MoveHelpers
 {
-	
+	public static float UnitHeight = .01f;
 }

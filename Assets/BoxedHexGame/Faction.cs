@@ -6,14 +6,21 @@ public class Faction : MonoBehaviour
 {
 	public Color Color;
 
-	public Unit[] Units;
+	public List<Faction> Allies;
+
+	public List<Unit> Units = new List<Unit>();
 	public bool UseAi;
 
-	void EndTurn()
+	public void EndTurn()
 	{
 		foreach (Unit unit in Units)
 		{
-			
+			if (UseAi)
+			{
+				unit.MoveTo(unit.GetAiMove());
+				unit.Attack(unit.GetAiAttckNode());
+			}
+			unit.Refresh();
 		}
 	}
 }

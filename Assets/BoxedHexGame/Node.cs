@@ -20,7 +20,7 @@ public class Node : MonoBehaviour
 	public Unit CurrentOccupant;
 	public Faction Owner;
 
-	public float GetEntryMoveCost(Node fromNode)
+	public float GetEntryMoveCost(Node fromNode, Unit unit)
 	{
 		var index = Neighbors.ToList().IndexOf(fromNode);
 		float edgeCost = 0;
@@ -42,14 +42,28 @@ public class Node : MonoBehaviour
 		return EntryAttackCost + edgeCost;
 	}
 
-	public Node[][] GetPossibleMovePaths(Unit unit)
+	public bool ContainsEnemy(Faction faction)
 	{
-
+		if (CurrentOccupant != null && !CurrentOccupant.Faction.Allies.Contains(faction))
+			return true;
+		return false;
 	}
 
-	public Node[] GetPossibleAttackNodes(Unit unit)
+	public bool ContainsAlly(Faction faction)
 	{
+		if (CurrentOccupant != null && (CurrentOccupant.Faction.Allies.Contains(faction) || CurrentOccupant.Faction == faction))
+			return true;
+		return false;
+	}
 
+	public bool BordersEnemy(Faction faction)
+	{
+		foreach (Node neighbor in Neighbors)
+		{
+			if (neighbor.CurrentOccupant != null && !neighbor.CurrentOccupant.Faction.Allies.Contains(faction))
+				return true;
+		}
+		return false;
 	}
 
 	public Sprite MapEditorGraphic;
