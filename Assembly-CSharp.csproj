@@ -61,11 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BoxedHexGame\Faction.cs" />
+    <Compile Include="Assets\BoxedHexGame\FactionVisuals.cs" />
     <Compile Include="Assets\BoxedHexGame\GameController.cs" />
     <Compile Include="Assets\BoxedHexGame\MoveHelpers.cs" />
     <Compile Include="Assets\BoxedHexGame\Node.cs" />
+    <Compile Include="Assets\BoxedHexGame\NodeContents.cs" />
+    <Compile Include="Assets\BoxedHexGame\NodeContentsVisuals.cs" />
     <Compile Include="Assets\BoxedHexGame\NodeEdge.cs" />
+    <Compile Include="Assets\BoxedHexGame\NodeEdgeVisuals.cs" />
+    <Compile Include="Assets\BoxedHexGame\NodeVisuals.cs" />
     <Compile Include="Assets\BoxedHexGame\Unit.cs" />
+    <Compile Include="Assets\BoxedHexGame\UnitVisuals.cs" />
     <Compile Include="Assets\Interactions\CameraControls.cs" />
     <Compile Include="Assets\Interactions\Helpers.cs" />
     <Compile Include="Assets\Interactions\MapInteractor.cs" />

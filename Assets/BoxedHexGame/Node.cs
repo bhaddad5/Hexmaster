@@ -10,16 +10,37 @@ public class EdgeModifiers
 
 public class Node : MonoBehaviour
 {
-	public bool Passable = true;
-	public float EntryMoveCost;
-	public float EntryAttackCost;
+	public NodeVisuals NodeVis;
 
 	public Node[] Neighbors = new Node[6];
 	public EdgeModifiers[] Edges = new EdgeModifiers[6];
+	public NodeContents Contents;
 
 	public Unit CurrentOccupant;
 	public Faction Owner;
 
+	//How badly do units want to move to this tile?
+	//Fill in with more AI logic as you go.
+	public float GetDesireToEnter(Unit unit)
+	{
+		float baseDesire = 0;
+		baseDesire += Contents.EntryAttackCost;
+		if (unit.Faction.Allies.Contains(Owner) && unit.Faction != Owner)
+			baseDesire += 1;
+		return baseDesire;
+	}
+
+	public bool NodePassable(Node fromNode)
+	{
+		var index = Neighbors.ToList().IndexOf(fromNode);
+		foreach (NodeEdge edgeMod in Edges[index].EdgeMods)
+		{
+			if (!edgeMod.Passable)
+				return false;
+		}
+		return Contents.Passable;
+	}
+	
 	public float GetEntryMoveCost(Node fromNode, Unit unit)
 	{
 		var index = Neighbors.ToList().IndexOf(fromNode);
@@ -28,7 +49,7 @@ public class Node : MonoBehaviour
 		{
 			edgeCost += edgeMod.EntryMoveCost;
 		}
-		return EntryMoveCost + edgeCost;
+		return Contents.EntryMoveCost + edgeCost;
 	}
 
 	public float GetEntryAttackCost(Node fromNode)
@@ -39,7 +60,7 @@ public class Node : MonoBehaviour
 		{
 			edgeCost += edgeMod.EntryAttackCost;
 		}
-		return EntryAttackCost + edgeCost;
+		return Contents.EntryAttackCost + edgeCost;
 	}
 
 	public bool ContainsEnemy(Faction faction)
@@ -66,5 +87,9 @@ public class Node : MonoBehaviour
 		return false;
 	}
 
-	public Sprite MapEditorGraphic;
+	public void UpdateOwner(Faction newOwner)
+	{
+		Owner = newOwner;
+		NodeVis.DisplayOwner();
+	}
 }

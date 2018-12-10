@@ -2,4 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeEdge : NodeContents {}
+public class NodeContentsVisuals : MonoBehaviour
+{
+	public Sprite EditorSprite;
+}

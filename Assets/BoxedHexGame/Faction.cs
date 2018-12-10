@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Faction : MonoBehaviour
 {
-	public Color Color;
+	public FactionVisuals Visuals;
 
 	public List<Faction> Allies;
 
@@ -17,8 +17,8 @@ public class Faction : MonoBehaviour
 		{
 			if (UseAi)
 			{
-				unit.MoveTo(unit.GetAiMove());
-				unit.Attack(unit.GetAiAttckNode());
+				unit.MoveTo(MoveHelpers.GetAiMove(unit));
+				unit.Attack(MoveHelpers.GetAiAttckNode(unit.CurrNode, unit.Faction, unit));
 			}
 			unit.Refresh();
 		}
