@@ -23,9 +23,14 @@ public class NodeVisuals : MonoBehaviour
 		{
 			foreach (NodeEdge edgeMod in Node.Edges[i].EdgeMods)
 			{
-				edgeMod.transform.localPosition = Vector3.zero;
+				edgeMod.transform.localPosition = new Vector3(0, 0, -edgeMod.Visuals.HeightOffset);
 				edgeMod.transform.localEulerAngles = new Vector3(0, 0, -60 * i);
 			}
+		}
+
+		if (Node.CurrentOccupant != null)
+		{
+			Node.CurrentOccupant.Visuals.MoveToNode(Node);
 		}
 	}
 }

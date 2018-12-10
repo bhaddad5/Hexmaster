@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76910f7945d62a4894300f66796501a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NodeEdge: {fileID: 114180892238071950}
   EditorSprite: {fileID: 21300000, guid: 9ffac24bf1c7b9b409803e07b111e665, type: 3}
   HeightOffset: 0.01
 --- !u!114 &114180892238071950
@@ -69,6 +70,7 @@ MonoBehaviour:
   Passable: 1
   EntryMoveCost: 0
   EntryAttackCost: 4
+  Visuals: {fileID: 114026214016797220}
 --- !u!212 &212570130129785520
 SpriteRenderer:
   m_ObjectHideFlags: 1

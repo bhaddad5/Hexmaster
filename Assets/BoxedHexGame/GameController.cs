@@ -19,4 +19,12 @@ public class GameController : MonoBehaviour
 			faction.EndTurn();
 		}
 	}
+
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			ExecuteEndTurn();
+		}
+	}
 }

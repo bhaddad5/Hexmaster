@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackStrength: 1
-  DefenseStrength: 1
+  DefenseStrength: 2
   MaxHP: 5
   CurrHP: 5
   Faction: {fileID: 0}

@@ -65,16 +65,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44d28b2d0131ad4590db20f874a4940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackStrength: 1
+  AttackStrength: 2
   DefenseStrength: 1
-  MaxHP: 5
-  CurrHP: 5
+  MaxHP: 3
+  CurrHP: 3
   Faction: {fileID: 0}
   Visuals: {fileID: 114156383829926008}
   CurrNode: {fileID: 0}
-  MaxMovePoints: 5
-  CurrMovePoints: 5
-  EditorGraphic: {fileID: 21300000, guid: ba0a234615d21204798b3dddd25275ca, type: 3}
+  MaxMovePoints: 8
+  CurrMovePoints: 8
 --- !u!212 &212436072488555152
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -10,6 +10,6 @@ public class UnitVisuals : MonoBehaviour
 
 	public void MoveToNode(Node node)
 	{
-		transform.position = node.transform.position + new Vector3(0, 0, UnitHeight);
+		transform.position = node.transform.position + new Vector3(0, 0, -UnitHeight);
 	}
 }
