@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4980626223788582}
   - component: {fileID: 212801593946455810}
-  - component: {fileID: 114476101353505974}
+  - component: {fileID: 114171930937702744}
+  - component: {fileID: 114309007177176058}
   m_Layer: 0
   m_Name: Mountains
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114476101353505974
+--- !u!114 &114171930937702744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,28 +50,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883743595280016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686f688073241444d8ec50dcfcf8700a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fd179d3498748048b5eda722a3a9f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Passable: 0
-  EntryMoveCost: 1
-  EntryAttackCost: 1
-  Neighbord:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Edges:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CurrentOccupant: {fileID: 0}
-  MapEditorGraphic: {fileID: 21300000, guid: e0d34c1fb2406e44a9380aa7848bc745, type: 3}
+  EntryMoveCost: 0
+  EntryAttackCost: 0
+--- !u!114 &114309007177176058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883743595280016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a316bb64816c0214c91b3d9d257d526b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EditorSprite: {fileID: 21300000, guid: e0d34c1fb2406e44a9380aa7848bc745, type: 3}
 --- !u!212 &212801593946455810
 SpriteRenderer:
   m_ObjectHideFlags: 1

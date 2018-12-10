@@ -5,4 +5,6 @@ using UnityEngine;
 public class NodeEdgeVisuals : MonoBehaviour
 {
 	public Sprite EditorSprite;
+
+	public float HeightOffset;
 }

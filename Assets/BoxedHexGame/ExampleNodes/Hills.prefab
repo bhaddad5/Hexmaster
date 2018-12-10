@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4591577336053946}
   - component: {fileID: 212439019246639934}
-  - component: {fileID: 114295793896284378}
+  - component: {fileID: 114701061992563044}
+  - component: {fileID: 114407938649364652}
   m_Layer: 0
   m_Name: Hills
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114295793896284378
+--- !u!114 &114407938649364652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,28 +50,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552293344624866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686f688073241444d8ec50dcfcf8700a, type: 3}
+  m_Script: {fileID: 11500000, guid: a316bb64816c0214c91b3d9d257d526b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EditorSprite: {fileID: 21300000, guid: bdcf44c3cacc4b242b314fbca6e301fc, type: 3}
+--- !u!114 &114701061992563044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552293344624866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd179d3498748048b5eda722a3a9f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Passable: 1
-  EntryMoveCost: 2
+  EntryMoveCost: 1
   EntryAttackCost: 2
-  Neighbord:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Edges:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CurrentOccupant: {fileID: 0}
-  MapEditorGraphic: {fileID: 21300000, guid: bdcf44c3cacc4b242b314fbca6e301fc, type: 3}
 --- !u!212 &212439019246639934
 SpriteRenderer:
   m_ObjectHideFlags: 1

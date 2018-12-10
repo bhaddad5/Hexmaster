@@ -63,6 +63,8 @@
     <Compile Include="Assets\BoxedHexGame\Faction.cs" />
     <Compile Include="Assets\BoxedHexGame\FactionVisuals.cs" />
     <Compile Include="Assets\BoxedHexGame\GameController.cs" />
+    <Compile Include="Assets\BoxedHexGame\Map.cs" />
+    <Compile Include="Assets\BoxedHexGame\MapVisuals.cs" />
     <Compile Include="Assets\BoxedHexGame\MoveHelpers.cs" />
     <Compile Include="Assets\BoxedHexGame\Node.cs" />
     <Compile Include="Assets\BoxedHexGame\NodeContents.cs" />

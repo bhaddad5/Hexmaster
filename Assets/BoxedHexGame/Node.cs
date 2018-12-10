@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[Serializable]
 public class EdgeModifiers
 {
 	public NodeEdge[] EdgeMods;
@@ -12,6 +14,7 @@ public class Node : MonoBehaviour
 {
 	public NodeVisuals NodeVis;
 
+	//Zero is the node to the right, then increments clockwise
 	public Node[] Neighbors = new Node[6];
 	public EdgeModifiers[] Edges = new EdgeModifiers[6];
 	public NodeContents Contents;

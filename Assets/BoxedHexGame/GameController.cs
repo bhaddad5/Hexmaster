@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+	public Map Map;
 	public List<Faction> Factions;
+
+	void Start()
+	{
+		Map.Visuals.DisplayMap();
+	}
 
 	public void ExecuteEndTurn()
 	{

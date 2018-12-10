@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4875013094861668}
   - component: {fileID: 212950336903679590}
-  - component: {fileID: 114212377858796120}
+  - component: {fileID: 114156628750408042}
+  - component: {fileID: 114174027064051208}
   m_Layer: 0
   m_Name: Urban
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114212377858796120
+--- !u!114 &114156628750408042
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,28 +50,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1296685555404888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686f688073241444d8ec50dcfcf8700a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fd179d3498748048b5eda722a3a9f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Passable: 1
-  EntryMoveCost: 2
-  EntryAttackCost: 3
-  Neighbord:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Edges:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CurrentOccupant: {fileID: 0}
-  MapEditorGraphic: {fileID: 21300000, guid: ea4e290255fb5b0438827b1d99372592, type: 3}
+  EntryMoveCost: 0
+  EntryAttackCost: 2
+--- !u!114 &114174027064051208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1296685555404888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a316bb64816c0214c91b3d9d257d526b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EditorSprite: {fileID: 21300000, guid: ea4e290255fb5b0438827b1d99372592, type: 3}
 --- !u!212 &212950336903679590
 SpriteRenderer:
   m_ObjectHideFlags: 1

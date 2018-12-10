@@ -5,8 +5,6 @@ using UnityEngine;
 
 public static class MoveHelpers
 {
-	public static float UnitHeight = .01f;
-
 	public static List<Node> GetPossibleAttackNodes(Node startNode, Faction unitFaction)
 	{
 		List<Node> nodes = new List<Node>();

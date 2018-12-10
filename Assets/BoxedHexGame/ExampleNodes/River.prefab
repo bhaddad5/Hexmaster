@@ -9,32 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1091076009420930}
+  m_RootGameObject: {fileID: 1243524826689196}
   m_IsPrefabAsset: 1
---- !u!1 &1091076009420930
+--- !u!1 &1243524826689196
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4781715970345232}
-  - component: {fileID: 212135168670201154}
-  - component: {fileID: 114697584277153926}
-  - component: {fileID: 114672237601063564}
+  - component: {fileID: 4953869090455134}
+  - component: {fileID: 212144572254007920}
+  - component: {fileID: 114922557099909514}
+  - component: {fileID: 114889978509255088}
   m_Layer: 0
-  m_Name: Forest
+  m_Name: River
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4781715970345232
+--- !u!4 &4953869090455134
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091076009420930}
+  m_GameObject: {fileID: 1243524826689196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -42,38 +42,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114672237601063564
+--- !u!114 &114889978509255088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091076009420930}
+  m_GameObject: {fileID: 1243524826689196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a316bb64816c0214c91b3d9d257d526b, type: 3}
+  m_Script: {fileID: 11500000, guid: b76910f7945d62a4894300f66796501a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditorSprite: {fileID: 21300000, guid: 4729835d8db53634ca03d71537042ccf, type: 3}
---- !u!114 &114697584277153926
+  EditorSprite: {fileID: 21300000, guid: 045afedaf33d0c246b9831a158b8c670, type: 3}
+--- !u!114 &114922557099909514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091076009420930}
+  m_GameObject: {fileID: 1243524826689196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd179d3498748048b5eda722a3a9f64, type: 3}
+  m_Script: {fileID: 11500000, guid: 56c01d473d5cc8146b531d339f8ab356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Passable: 1
   EntryMoveCost: 1
-  EntryAttackCost: 1
---- !u!212 &212135168670201154
+  EntryAttackCost: 2
+--- !u!212 &212144572254007920
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091076009420930}
+  m_GameObject: {fileID: 1243524826689196}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4729835d8db53634ca03d71537042ccf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 045afedaf33d0c246b9831a158b8c670, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

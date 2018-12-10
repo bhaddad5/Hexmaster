@@ -81,6 +81,4 @@ public class Unit : MonoBehaviour
 	{
 		CurrMovePoints = MaxMovePoints;
 	}
-
-	public Sprite EditorGraphic;
 }
